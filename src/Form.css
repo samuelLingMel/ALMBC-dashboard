@@ -1,0 +1,17 @@
+
+main {
+  background-color: white;
+  color: blue;
+  font-family: Poppins;
+}
+
+.nav-main {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-column-gap: 2px;
+}
+
+aside h3{
+    font-family: Poppins;
+    color: white;
+}

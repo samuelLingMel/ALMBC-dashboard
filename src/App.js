@@ -1,6 +1,7 @@
 import React from 'react';
-
+import Form from './Form.js'
 import './App.css';
+import Header from './Header.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class App extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({ [e.target.className]: e.target.value })
-  }
+    this.setState({ [e.target.className]: e.target.value });
+  };
 
   space = () => {
     if (this.state.state) {
@@ -31,11 +32,11 @@ class App extends React.Component {
             <option value="200<">more than 200</option>
           </select>
         </div>
-      )
+      );
     } else {
       return(<div></div>)
-    }
-  }
+    };
+  };
   outdoorOrIndoor = () => {
     if (this.state.state) {
       return(
@@ -46,11 +47,11 @@ class App extends React.Component {
             <option value="indoors">indoors</option>
           </select>
         </div>
-      )
+      );
     } else {
       return(<div></div>)
-    }
-  }
+    };
+  };
   event = () => {
     if (this.state.state) {
       return(
@@ -62,16 +63,17 @@ class App extends React.Component {
             <option value="other">other</option>
           </select>
         </div>
-      )
+      );
     } else {
       return(<div></div>)
-    }
-  }
+    };
+  };
 
   render() {
     return(
       <div className="App">
-        <h1>Risk Assessment Form</h1>
+        <Header />
+        {/* <h1>Risk Assessment Form</h1>
         <div>I am located in 
           <select onChange={this.handleChange} class="state">
             <option value="start">pick a state</option>
@@ -86,11 +88,12 @@ class App extends React.Component {
         </div>
         {this.space()}
         {this.event()}
-        {this.outdoorOrIndoor()}
+        {this.outdoorOrIndoor()} */}
+        <Form />
       </div>
     );
-  }
-}
+  };
+};
 
 let data = {
   federal: {
@@ -106,6 +109,6 @@ let data = {
     additionalSupport: ['Payments and Services during COVID-19', 'https://www.servicesaustralia.gov.au/individuals/subjects/payments-and-services-during-coronavirus-covid-19']
   }
 
-}
+};
 
 export default App;
