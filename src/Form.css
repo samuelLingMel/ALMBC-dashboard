@@ -3,6 +3,7 @@ main {
   background-color: white;
   color: blue;
   font-family: Poppins;
+  padding: 5px;
 }
 
 .nav-main {
@@ -11,7 +12,41 @@ main {
   grid-column-gap: 2px;
 }
 
-aside h3{
-    font-family: Poppins;
-    color: white;
+aside h3, aside ul{
+  font-family: Poppins;
+  color: white;
+  padding: 0;
+}
+
+.plus {
+  font-size: 40px;
+  position: right;
+}
+
+.plus-grid {
+  display: grid;
+  grid-template-columns: auto 22px;
+}
+
+.addState {
+  visibility: hidden;
+  background-color: white;
+  position: absolute;
+  margin: 10px;
+  width: 230px;
+  border: solid blue 1px;
+}
+
+.addState label {
+  font-size: 20px;
+}
+
+.addState ul {
+  margin: 0;
+}
+
+.plus .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
 }
