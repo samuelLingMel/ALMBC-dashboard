@@ -2,7 +2,7 @@
 main {
   background-color: white;
   color: blue;
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   padding: 5px;
 }
 
@@ -13,7 +13,7 @@ main {
 }
 
 aside h3, aside ul{
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   color: white;
   padding: 0;
 }
