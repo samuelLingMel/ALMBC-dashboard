@@ -39,6 +39,18 @@ class Form extends React.Component {
 
   render() {
 
+    // every time we change state it will refresh
+    // create array to house the arrays 
+    // loop through the fields
+    // generate a div to house the array with information with the style below(with a responsive number of columns)
+    // loop through the states 
+      // first field will just loop be for the name(of the state like a title for the column)
+      // a different function for each field - function to handle:
+        // need an if for each state they will have different information
+        // for each state add a div to an array with the information
+      
+      // return the array to a div 
+
     const styleForGrid = {
         display: 'grid',
         'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`
@@ -50,7 +62,7 @@ class Form extends React.Component {
 
 
     if ((this.state.states).includes('qld')) {
-        queensland = <div><h3>Queensland</h3><p>QLD field 1 info</p><p>QLD field 2 info</p><p>QLD field 3 info</p></div>
+        queensland = [[<div>testing 1</div>,<div>testing 2</div>,<div>testing 3</div>],<h3>Queensland</h3>,<p>QLD field 1 info</p>,<p>QLD field 2 info</p>,<p>QLD field 3 info</p>]
     }
     
     if ((this.state.states).includes('vic')) {
@@ -72,7 +84,7 @@ class Form extends React.Component {
         <main>
           <div className='plus-grid'>
             <div className='display-info' style= {styleForGrid}>
-              {queensland}
+              <div></div>{queensland}
               {victoria}
               {newsouthwales}
             </div>
