@@ -10,15 +10,201 @@ class Form extends React.Component {
     };
   };
 
-// remember button to expand all boxes at once
-//   function to show each territories name in states
-// accepts states as an argument
-// first shows bar with field name(and summary?)
-// loops through the length of states
-// this part can be changed depending on parameter
-// if 3 letter code corresponds it returns a div with the name
-// if states[i] corresponds to  3 letter terri code 
-// then show information of field to that terri
+//-------------------------------------------------------
+
+  infoRestrictionsAndRoadmaps = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoCovidSafeGuidelines = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoCovidSafePlans = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoAdditionalResources = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoLiveMusicRestrictions = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoSeatingRestrictions = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+  
+  infoDanceRestrictions = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoAlcoholRestrictions = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoPhysicalDistancing = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoTravelPermits = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoMaximumNumberPatrons = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoContactRegisterRequirements = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoTicketing = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoTraining = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoBorderRestrictions = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+  infoQuarantineRequirements = (state) => {
+    if (state === 'nsw') {
+    } else if (state === 'vic') {
+    } else if (state === 'qld') {
+    } else if (state === 'sa') {
+    } else if (state === 'nt') {
+    } else if (state === 'wa') {
+    } else if (state === 'act') {
+    } else if (state === 'tas') {
+    }
+  }
+
+//-------------------------------------------------------
 
   showAddState = () => {
     var addState = document.querySelector('.addState');
@@ -56,6 +242,17 @@ class Form extends React.Component {
         'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`
     }
 
+
+    const state = this.state
+
+    const checkedOrUnchecked = function(stateCode) {
+      if (state.states.includes(stateCode)) {
+        return(true)
+      } else {
+        return(false)
+      }
+    }
+
     let queensland;
     let victoria;
     let newsouthwales;
@@ -84,7 +281,7 @@ class Form extends React.Component {
         <main>
           <div className='plus-grid'>
             <div className='display-info' style= {styleForGrid}>
-              <div></div>{queensland}
+              <div>{queensland}</div>
               {victoria}
               {newsouthwales}
             </div>
@@ -93,13 +290,13 @@ class Form extends React.Component {
               <div className='addState'>
                 <ul>
                   <label htmlFor="">Queensland</label>
-                  <input checked value='qld' type="checkbox"  onClick={this.toggleStates}/>
+                  <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkedOrUnchecked('qld')}/>
                 </ul>
                 <ul>
                   <label htmlFor="">Victoria</label>
                   <input value='vic' type="checkbox"  onClick={this.toggleStates}/>
                 </ul>
-                <ul>
+                <ul>.
                   <label htmlFor="">New South Wales</label>
                   <input value='nsw' type="checkbox"  onClick={this.toggleStates}/>
                 </ul>
