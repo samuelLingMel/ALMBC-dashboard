@@ -3,12 +3,11 @@ main {
   background-color: white;
   color: blue;
   font-family: 'Poppins', sans-serif;
-  padding: 5px;
 }
 
 .nav-main {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-column-gap: 2px;
 }
 
@@ -21,6 +20,8 @@ aside h3, aside ul{
 .plus {
   font-size: 40px;
   position: right;
+  /* background-color: blue;
+  color: white; */
 }
 
 .plus-grid {
@@ -49,4 +50,12 @@ aside h3, aside ul{
   visibility: visible;
   -webkit-animation: fadeIn 0.5s;
   animation: fadeIn 0.5s;
+}
+
+.gray-bgc {
+  background-color: lightgray;
+}
+
+.fieldTitle {
+  border: blue 1px solid;
 }

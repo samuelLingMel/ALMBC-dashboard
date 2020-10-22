@@ -5,17 +5,40 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      states: ['qld'],
-      fields: []
+      states: ['nsw'],
+      fields: ['rar', 'csg', 'csp']
     };
   };
 
-//-------------------------------------------------------
+//------------------------------------------------------------
+
+  getStatesNames = (state) => {
+    if (state === 'nsw') {
+      return('New South Wales')
+    } else if (state === 'vic') {
+      return('Victoria')
+    } else if (state === 'qld') {
+      return('Queensland')
+    } else if (state === 'sa') {
+      return('South Australia')
+    } else if (state === 'nt') {
+      return('Northern Territory')
+    } else if (state === 'wa') {
+      return('Western Australia')
+    } else if (state === 'act') {
+      return('Australian Capitol Territory')
+    } else if (state === 'tas') {
+      return('Tasmania')
+    }
+  }
 
   infoRestrictionsAndRoadmaps = (state) => {
     if (state === 'nsw') {
+      return('Restrictions and Roadmaps Lorem Ipsum NSW')
     } else if (state === 'vic') {
+      return('Restrictions and Roadmaps Lorem Ipsum VIC')
     } else if (state === 'qld') {
+      return('Restrictions and Roadmaps Lorem Ipsum QLD')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -26,8 +49,11 @@ class Form extends React.Component {
 
   infoCovidSafeGuidelines = (state) => {
     if (state === 'nsw') {
+      return('Covid Safe Guidelines Lorem Ipsum NSW')
     } else if (state === 'vic') {
+      return('Covid Safe Guidelines Lorem Ipsum VIC')
     } else if (state === 'qld') {
+      return('Covid Safe Guidelines Lorem Ipsum QLD')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -38,8 +64,11 @@ class Form extends React.Component {
 
   infoCovidSafePlans = (state) => {
     if (state === 'nsw') {
+      return('Covid Safe Plans Lorem Ipsum NSW')
     } else if (state === 'vic') {
+      return('Covid Safe Plans Lorem Ipsum VIC')
     } else if (state === 'qld') {
+      return('Covid Safe Plans Lorem Ipsum QLD')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -204,7 +233,7 @@ class Form extends React.Component {
     }
   }
 
-//-------------------------------------------------------
+//------------------------------------------------------------
 
   showAddState = () => {
     var addState = document.querySelector('.addState');
@@ -217,88 +246,109 @@ class Form extends React.Component {
     states: this.state.states.filter((value) => value !== (e.target.value))
       });
     } else {
-        var newState = this.state.states
-        newState.push(e.target.value)
-        this.setState({ states: newState})
+        var newStates = this.state.states
+        newStates.push(e.target.value)
+        this.setState({ states: newStates})
+    }
+  };
+
+  toggleFields = (e) => {
+    if ((this.state.fields).includes(e.target.value)) {
+    this.setState({
+    fields: this.state.fields.filter((value) => value !== (e.target.value))
+      });
+    } else {
+        var newFields = this.state.fields
+        newFields.push(e.target.value)
+        this.setState({ fields: newFields})
     }
   };
 
   render() {
-
-    // every time we change state it will refresh
-    // create array to house the arrays 
-    // loop through the fields
-    // generate a div to house the array with information with the style below(with a responsive number of columns)
-    // loop through the states 
-      // first field will just loop be for the name(of the state like a title for the column)
-      // a different function for each field - function to handle:
-        // need an if for each state they will have different information
-        // for each state add a div to an array with the information
-      
-      // return the array to a div 
 
     const styleForGrid = {
         display: 'grid',
         'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`
     }
 
+    const thisState = this.state
 
-    const state = this.state
-
-    const checkedOrUnchecked = function(stateCode) {
-      if (state.states.includes(stateCode)) {
+    const checkState = function(stateCode) {
+      if (thisState.states.includes(stateCode)) {
+        return(true)
+      } else {
+        return(false)
+      }
+    }
+    
+    const checkField = function(fieldCode) {
+      if (thisState.fields.includes(fieldCode)) {
         return(true)
       } else {
         return(false)
       }
     }
 
-    let queensland;
-    let victoria;
-    let newsouthwales;
+    let stateNames = []
 
-
-    if ((this.state.states).includes('qld')) {
-        queensland = [[<div>testing 1</div>,<div>testing 2</div>,<div>testing 3</div>],<h3>Queensland</h3>,<p>QLD field 1 info</p>,<p>QLD field 2 info</p>,<p>QLD field 3 info</p>]
-    }
     
-    if ((this.state.states).includes('vic')) {
-      victoria = <div><h3>Victoria</h3><p>VIC field 1 info</p><p>VIC field 2 info</p><p>VIC field 3 info</p></div>
-    }
 
-    if ((this.state.states).includes('nsw')) {
-      newsouthwales = <div><h3>New South Wales</h3><p>NSW field 1 info</p><p>NSW field 2 info</p><p>NSW field 3 info</p></div>
-    }
+    thisState.states.forEach( (stateCode,index) => {
+      if (index % 2 === 0) {
+        stateNames.push(<div className='state-title'>{this.getStatesNames(stateCode)}</div>)
+      } else {
+        stateNames.push(<div className='state-title gray-bgc'>{this.getStatesNames(stateCode)}</div>)
+      }
+
+    })
+    
+    let restrictionsAndRoadmaps = [];
+
+    thisState.states.forEach(( stateCode, index) => {
+      if (index % 2 === 0) {
+        restrictionsAndRoadmaps.push(<div className='state-title'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
+      } else {
+        restrictionsAndRoadmaps.push(<div className='state-title gray-bgc'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
+      }
+    })
+
+    let showFields =  [<div className='fieldTitle'>restrictions and Roadmaps  </div>,
+    <div className='display-info' style={styleForGrid}>
+      {restrictionsAndRoadmaps}
+    </div>]
 
     return(
       <div className="form nav-main">
         <aside className='nav-fields'>
           <h3>State</h3>
-          <ul>field 1</ul>
-          <ul>field 2</ul>
-          <ul>field 3</ul>
+          <ul><input  value='rar' type="checkbox"  onClick={this.toggleFields} checked={checkField('rar')}/>Restrictions and Roadmaps</ul> 
+          <ul><input  value='csg' type="checkbox"  onClick={this.toggleFields} checked={checkField('csg')}/>COVID Safe Guidelines</ul>
+          <ul><input  value='csp' type="checkbox"  onClick={this.toggleFields} checked={checkField('csp')}/>COVID Safe plans</ul>
         </aside>
         <main>
           <div className='plus-grid'>
-            <div className='display-info' style= {styleForGrid}>
-              <div>{queensland}</div>
-              {victoria}
-              {newsouthwales}
+            <div>
+              <div className='display-info' style={styleForGrid}>
+                {stateNames}
+              </div>
+
+              {showFields}
+             
             </div>
             <div className='plus' onClick={this.showAddState}>
               +
               <div className='addState'>
                 <ul>
                   <label htmlFor="">Queensland</label>
-                  <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkedOrUnchecked('qld')}/>
+                  <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
                 </ul>
                 <ul>
                   <label htmlFor="">Victoria</label>
-                  <input value='vic' type="checkbox"  onClick={this.toggleStates}/>
+                  <input value='vic' type="checkbox"  onClick={this.toggleStates} checked={checkState('vic')}/>
                 </ul>
-                <ul>.
+                <ul>
                   <label htmlFor="">New South Wales</label>
-                  <input value='nsw' type="checkbox"  onClick={this.toggleStates}/>
+                  <input value='nsw' type="checkbox"  onClick={this.toggleStates} checked={checkState('nsw')}/>
                 </ul>
               </div>
             </div>
