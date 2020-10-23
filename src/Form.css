@@ -1,4 +1,6 @@
-
+ul { 
+  padding-left: 10px;
+}
 main {
   background-color: white;
   color: blue;
@@ -68,10 +70,23 @@ aside h3, aside ul{
   font-size: 20px;
 }
 
-.field-card, .state-title {
-  margin: 5px;
-}
+/* .display-info, .state-title {
+  padding: 0 5px;
+} */
 
 .state-title {
   font-size: 22px;
+}
+
+.field-card {
+  margin: 0;
+}
+
+.state-title {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.content {
+  margin: 5px;
 }

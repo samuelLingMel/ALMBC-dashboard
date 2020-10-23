@@ -53,10 +53,15 @@ class Form extends React.Component {
       } else if (state === 'qld') {
         return('Restrictions and Roadmaps QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'sa') {
+        return('Restrictions and Roadmaps SA Lorem ipsum')
       } else if (state === 'nt') {
+        return('Restrictions and Roadmaps NT Lorem ipsum')
       } else if (state === 'wa') {
+        return('Restrictions and Roadmaps WA Lorem ipsum')
       } else if (state === 'act') {
+        return('Restrictions and Roadmaps ACT Lorem ipsum')
       } else if (state === 'tas') {
+        return('Restrictions and Roadmaps TAS Lorem ipsum')
       }
     }
     
@@ -69,10 +74,15 @@ class Form extends React.Component {
       } else if (state === 'qld') {
         return('Covid Safe Guidelines QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'sa') {
+        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'nt') {
+        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'wa') {
+        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'act') {
+        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'tas') {
+        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       }
     }
 
@@ -85,13 +95,18 @@ class Form extends React.Component {
       } else if (state === 'qld') {
         return('Covid Safe Plans QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'sa') {
+        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'nt') {
+        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'wa') {
+        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'act') {
+        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       } else if (state === 'tas') {
+        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
       }
     }
-
+    else if (field === 'adr') {
     // infoAdditionalResources = (state) => {
     //   if (state === 'nsw') {
     //   } else if (state === 'vic') {
@@ -247,6 +262,7 @@ class Form extends React.Component {
     //   } else if (state === 'tas') {
     //   }
     // }
+    }
   }
 
 //------------------------------------------------------------
@@ -285,7 +301,7 @@ class Form extends React.Component {
     const styleForGrid = {
         display: 'grid',
         'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`,
-        'gridColumnGap': '2px'
+        'gridColumnGap': '5px'
       }
 
     const thisState = this.state
@@ -351,8 +367,8 @@ class Form extends React.Component {
         </aside>
         <main>
           <div className='plus-grid'>
-            <div>
-              <div style={styleForGrid}>
+            <div className='content'>
+              <div className='state-names' style={styleForGrid}>
                 {stateNames}
               </div>
 
@@ -363,16 +379,36 @@ class Form extends React.Component {
               +
               <div className='add-state'>
                 <ul>
-                  <label htmlFor="">Queensland</label>
                   <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
+                  <label htmlFor="">Queensland</label>
                 </ul>
                 <ul>
-                  <label htmlFor="">Victoria</label>
                   <input value='vic' type="checkbox"  onClick={this.toggleStates} checked={checkState('vic')}/>
+                  <label htmlFor="">Victoria</label>
                 </ul>
                 <ul>
-                  <label htmlFor="">New South Wales</label>
                   <input value='nsw' type="checkbox"  onClick={this.toggleStates} checked={checkState('nsw')}/>
+                  <label htmlFor="">New South Wales</label>
+                </ul>
+                <ul>
+                  <input value='nt' type="checkbox"  onClick={this.toggleStates} checked={checkState('nt')}/>
+                  <label htmlFor="">Northern Territory</label>
+                </ul>
+                <ul>
+                  <input value='sa' type="checkbox"  onClick={this.toggleStates} checked={checkState('sa')}/>
+                  <label htmlFor="">South Australia</label>
+                </ul>
+                <ul>
+                  <input value='act' type="checkbox"  onClick={this.toggleStates} checked={checkState('act')}/>
+                  <label htmlFor="">Australia Capitol Territory</label>
+                </ul>
+                <ul>
+                  <input value='tas' type="checkbox"  onClick={this.toggleStates} checked={checkState('tas')}/>
+                  <label htmlFor="">Tasmania</label>
+                </ul>
+                <ul>
+                  <input value='wa' type="checkbox"  onClick={this.toggleStates} checked={checkState('wa')}/>
+                  <label htmlFor="">Western Australia</label>
                 </ul>
               </div>
             </div>
