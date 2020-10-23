@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/ALMBC-dashboard2.0/static/css/main.efe7cbd9.chunk.css",
-    "main.js": "/ALMBC-dashboard2.0/static/js/main.ce83da5a.chunk.js",
-    "main.js.map": "/ALMBC-dashboard2.0/static/js/main.ce83da5a.chunk.js.map",
-    "runtime-main.js": "/ALMBC-dashboard2.0/static/js/runtime-main.17330585.js",
-    "runtime-main.js.map": "/ALMBC-dashboard2.0/static/js/runtime-main.17330585.js.map",
-    "static/js/2.d214c578.chunk.js": "/ALMBC-dashboard2.0/static/js/2.d214c578.chunk.js",
-    "static/js/2.d214c578.chunk.js.map": "/ALMBC-dashboard2.0/static/js/2.d214c578.chunk.js.map",
-    "index.html": "/ALMBC-dashboard2.0/index.html",
-    "precache-manifest.61867f1205e2b51f61e930f1a5d3c76b.js": "/ALMBC-dashboard2.0/precache-manifest.61867f1205e2b51f61e930f1a5d3c76b.js",
-    "service-worker.js": "/ALMBC-dashboard2.0/service-worker.js",
-    "static/css/main.efe7cbd9.chunk.css.map": "/ALMBC-dashboard2.0/static/css/main.efe7cbd9.chunk.css.map",
-    "static/js/2.d214c578.chunk.js.LICENSE.txt": "/ALMBC-dashboard2.0/static/js/2.d214c578.chunk.js.LICENSE.txt"
+    "main.css": "/ALMBC-dashboard/static/css/main.efe7cbd9.chunk.css",
+    "main.js": "/ALMBC-dashboard/static/js/main.a090ff42.chunk.js",
+    "main.js.map": "/ALMBC-dashboard/static/js/main.a090ff42.chunk.js.map",
+    "runtime-main.js": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js",
+    "runtime-main.js.map": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js.map",
+    "static/js/2.d214c578.chunk.js": "/ALMBC-dashboard/static/js/2.d214c578.chunk.js",
+    "static/js/2.d214c578.chunk.js.map": "/ALMBC-dashboard/static/js/2.d214c578.chunk.js.map",
+    "index.html": "/ALMBC-dashboard/index.html",
+    "precache-manifest.44e4aa73bb3a3daede1cda712f70e892.js": "/ALMBC-dashboard/precache-manifest.44e4aa73bb3a3daede1cda712f70e892.js",
+    "service-worker.js": "/ALMBC-dashboard/service-worker.js",
+    "static/css/main.efe7cbd9.chunk.css.map": "/ALMBC-dashboard/static/css/main.efe7cbd9.chunk.css.map",
+    "static/js/2.d214c578.chunk.js.LICENSE.txt": "/ALMBC-dashboard/static/js/2.d214c578.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.17330585.js",
+    "static/js/runtime-main.110bf259.js",
     "static/js/2.d214c578.chunk.js",
     "static/css/main.efe7cbd9.chunk.css",
-    "static/js/main.ce83da5a.chunk.js"
+    "static/js/main.a090ff42.chunk.js"
   ]
 }
