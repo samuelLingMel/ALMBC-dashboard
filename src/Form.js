@@ -32,216 +32,221 @@ class Form extends React.Component {
     }
   }
 
-  getFieldnames = (fieldCode) => {
+  getFieldNames = (fieldCode) => {
     if (fieldCode === 'rar') {
       return(<div className='field-title'>Restrictions and Roadmaps</div>)
-    } else if (fieldCode = 'csg') {
+    } else if (fieldCode === 'csg') {
       return(<div className='field-title'>COVID Safe GuideLines</div>)
-    } else if (fieldCode = 'csp') {
+    } else if (fieldCode === 'csp') {
       return(<div className='field-title'>COVID Safe Plans</div>)
     }
   }
 
-  infoRestrictionsAndRoadmaps = (state) => {
-    if (state === 'nsw') {
-      return('Restrictions and Roadmaps NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'vic') {
-      return('Restrictions and Roadmaps VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'qld') {
-      return('Restrictions and Roadmaps QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
+  getInfo = (field, state) => {
+    
+    if (field === 'rar') {
+    // infoRestrictionsAndRoadmaps = (state) => {
+      if (state === 'nsw') {
+        return('Restrictions and Roadmaps NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'vic') {
+        return('Restrictions and Roadmaps VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'qld') {
+        return('Restrictions and Roadmaps QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'sa') {
+      } else if (state === 'nt') {
+      } else if (state === 'wa') {
+      } else if (state === 'act') {
+      } else if (state === 'tas') {
+      }
     }
-  }
+    
+    else if (field === 'csg') {
+    // infoCovidSafeGuidelines = (state) => {
+      if (state === 'nsw') {
+        return('Covid Safe Guidelines NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'vic') {
+        return('Covid Safe Guidelines VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'qld') {
+        return('Covid Safe Guidelines QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'sa') {
+      } else if (state === 'nt') {
+      } else if (state === 'wa') {
+      } else if (state === 'act') {
+      } else if (state === 'tas') {
+      }
+    }
 
-  
-  infoCovidSafeGuidelines = (state) => {
-    if (state === 'nsw') {
-      return('Covid Safe Guidelines NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'vic') {
-      return('Covid Safe Guidelines VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'qld') {
-      return('Covid Safe Guidelines QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
+    else if (field === 'csp') {
+    // infoCovidSafePlans = (state) => {
+      if (state === 'nsw') {
+        return('Covid Safe Plans NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'vic') {
+        return('Covid Safe Plans VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'qld') {
+        return('Covid Safe Plans QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+      } else if (state === 'sa') {
+      } else if (state === 'nt') {
+      } else if (state === 'wa') {
+      } else if (state === 'act') {
+      } else if (state === 'tas') {
+      }
     }
-  }
 
-  infoCovidSafePlans = (state) => {
-    if (state === 'nsw') {
-      return('Covid Safe Plans NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'vic') {
-      return('Covid Safe Plans VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'qld') {
-      return('Covid Safe Plans QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoAdditionalResources = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoAdditionalResources = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoLiveMusicRestrictions = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoLiveMusicRestrictions = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoSeatingRestrictions = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
+    
+    // infoDanceRestrictions = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoSeatingRestrictions = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
-  
-  infoDanceRestrictions = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoAlcoholRestrictions = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoAlcoholRestrictions = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoPhysicalDistancing = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoPhysicalDistancing = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoTravelPermits = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoTravelPermits = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoMaximumNumberPatrons = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoMaximumNumberPatrons = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoContactRegisterRequirements = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoContactRegisterRequirements = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoTicketing = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoTicketing = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoTraining = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoTraining = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
+    // infoBorderRestrictions = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
 
-  infoBorderRestrictions = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
-  }
-
-  infoQuarantineRequirements = (state) => {
-    if (state === 'nsw') {
-    } else if (state === 'vic') {
-    } else if (state === 'qld') {
-    } else if (state === 'sa') {
-    } else if (state === 'nt') {
-    } else if (state === 'wa') {
-    } else if (state === 'act') {
-    } else if (state === 'tas') {
-    }
+    // infoQuarantineRequirements = (state) => {
+    //   if (state === 'nsw') {
+    //   } else if (state === 'vic') {
+    //   } else if (state === 'qld') {
+    //   } else if (state === 'sa') {
+    //   } else if (state === 'nt') {
+    //   } else if (state === 'wa') {
+    //   } else if (state === 'act') {
+    //   } else if (state === 'tas') {
+    //   }
+    // }
   }
 
 //------------------------------------------------------------
@@ -279,8 +284,8 @@ class Form extends React.Component {
 
     const styleForGrid = {
         display: 'grid',
-        'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`
-        // 'gridGapColumns': '2px'
+        'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`,
+        'gridColumnGap': '2px'
       }
 
     const thisState = this.state
@@ -303,8 +308,6 @@ class Form extends React.Component {
 
     let stateNames = []
 
-    
-
     thisState.states.forEach( (stateCode,index) => {
       if (index % 2 === 0) {
         stateNames.push(<div className='state-title'>{this.getStatesNames(stateCode)}</div>)
@@ -314,24 +317,29 @@ class Form extends React.Component {
 
     })
     
-    let restrictionsAndRoadmaps = [];
-
-    thisState.states.forEach(( stateCode, index) => {
-      if (index % 2 === 0) {
-        restrictionsAndRoadmaps.push(<div className='display-info'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
-      } else {
-        restrictionsAndRoadmaps.push(<div className='display-info gray-bgc'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
-      }
-    })
-
-    let showFields = [<div className='field-card'><div className='field-title'>Restrictions and Roadmaps  </div>
-    <div className='display-info' style={styleForGrid}>
-      {restrictionsAndRoadmaps}
-    </div></div>]
+    let showFields = []
     
-    // thisState.fields.forEach( )
+    thisState.fields.forEach( (fieldCode) => {
+      const fieldName = this.getFieldNames(fieldCode)
+      let restrictionsAndRoadmaps = [];
 
-    // []
+      thisState.states.forEach(( stateCode, index) => {
+        if (index % 2 === 0) {
+          restrictionsAndRoadmaps.push(<div className='display-info'>{this.getInfo(fieldCode, stateCode)}</div>)
+        } else {
+          restrictionsAndRoadmaps.push(<div className='display-info gray-bgc'>{this.getInfo(fieldCode, stateCode)}</div>)
+        }
+      })
+
+      showFields.push(
+        <div className='field-card'>
+          {fieldName}
+        <div className='display-info' style={styleForGrid}>
+          {restrictionsAndRoadmaps}
+        </div>
+      </div>
+      )
+    })
 
     return(
       <div className="form nav-main">
