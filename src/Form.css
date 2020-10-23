@@ -20,8 +20,10 @@ aside h3, aside ul{
 .plus {
   font-size: 40px;
   position: right;
-  /* background-color: blue;
-  color: white; */
+  background-color: blue;
+  color: white;
+  margin: 0;
+  height: 100%;
 }
 
 .plus-grid {
@@ -29,7 +31,11 @@ aside h3, aside ul{
   grid-template-columns: auto 22px;
 }
 
-.addState {
+.plus .add-state {
+  color: blue;
+}
+
+.add-state {
   visibility: hidden;
   background-color: white;
   position: absolute;
@@ -38,11 +44,11 @@ aside h3, aside ul{
   border: solid blue 1px;
 }
 
-.addState label {
+.add-state label {
   font-size: 20px;
 }
 
-.addState ul {
+.add-state ul {
   margin: 0;
 }
 
@@ -54,8 +60,18 @@ aside h3, aside ul{
 
 .gray-bgc {
   background-color: lightgray;
+  padding: 0 5px;
 }
 
-.fieldTitle {
+.field-title {
   border: blue 1px solid;
+  font-size: 20px;
+}
+
+.field-card, .state-title {
+  margin: 5px;
+}
+
+.state-title {
+  font-size: 22px;
 }

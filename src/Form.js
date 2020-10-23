@@ -32,13 +32,23 @@ class Form extends React.Component {
     }
   }
 
+  getFieldnames = (fieldCode) => {
+    if (fieldCode === 'rar') {
+      return(<div className='field-title'>Restrictions and Roadmaps</div>)
+    } else if (fieldCode = 'csg') {
+      return(<div className='field-title'>COVID Safe GuideLines</div>)
+    } else if (fieldCode = 'csp') {
+      return(<div className='field-title'>COVID Safe Plans</div>)
+    }
+  }
+
   infoRestrictionsAndRoadmaps = (state) => {
     if (state === 'nsw') {
-      return('Restrictions and Roadmaps Lorem Ipsum NSW')
+      return('Restrictions and Roadmaps NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'vic') {
-      return('Restrictions and Roadmaps Lorem Ipsum VIC')
+      return('Restrictions and Roadmaps VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'qld') {
-      return('Restrictions and Roadmaps Lorem Ipsum QLD')
+      return('Restrictions and Roadmaps QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -47,13 +57,14 @@ class Form extends React.Component {
     }
   }
 
+  
   infoCovidSafeGuidelines = (state) => {
     if (state === 'nsw') {
-      return('Covid Safe Guidelines Lorem Ipsum NSW')
+      return('Covid Safe Guidelines NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'vic') {
-      return('Covid Safe Guidelines Lorem Ipsum VIC')
+      return('Covid Safe Guidelines VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'qld') {
-      return('Covid Safe Guidelines Lorem Ipsum QLD')
+      return('Covid Safe Guidelines QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -64,11 +75,11 @@ class Form extends React.Component {
 
   infoCovidSafePlans = (state) => {
     if (state === 'nsw') {
-      return('Covid Safe Plans Lorem Ipsum NSW')
+      return('Covid Safe Plans NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'vic') {
-      return('Covid Safe Plans Lorem Ipsum VIC')
+      return('Covid Safe Plans VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'qld') {
-      return('Covid Safe Plans Lorem Ipsum QLD')
+      return('Covid Safe Plans QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
     } else if (state === 'sa') {
     } else if (state === 'nt') {
     } else if (state === 'wa') {
@@ -236,7 +247,7 @@ class Form extends React.Component {
 //------------------------------------------------------------
 
   showAddState = () => {
-    var addState = document.querySelector('.addState');
+    var addState= document.querySelector('.add-state');
     addState.classList.toggle("show");
   }
 
@@ -269,7 +280,8 @@ class Form extends React.Component {
     const styleForGrid = {
         display: 'grid',
         'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`
-    }
+        // 'gridGapColumns': '2px'
+      }
 
     const thisState = this.state
 
@@ -306,16 +318,20 @@ class Form extends React.Component {
 
     thisState.states.forEach(( stateCode, index) => {
       if (index % 2 === 0) {
-        restrictionsAndRoadmaps.push(<div className='state-title'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
+        restrictionsAndRoadmaps.push(<div className='display-info'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
       } else {
-        restrictionsAndRoadmaps.push(<div className='state-title gray-bgc'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
+        restrictionsAndRoadmaps.push(<div className='display-info gray-bgc'>{this.infoRestrictionsAndRoadmaps(stateCode)}</div>)
       }
     })
 
-    let showFields =  [<div className='fieldTitle'>restrictions and Roadmaps  </div>,
+    let showFields = [<div className='field-card'><div className='field-title'>Restrictions and Roadmaps  </div>
     <div className='display-info' style={styleForGrid}>
       {restrictionsAndRoadmaps}
-    </div>]
+    </div></div>]
+    
+    // thisState.fields.forEach( )
+
+    // []
 
     return(
       <div className="form nav-main">
@@ -328,7 +344,7 @@ class Form extends React.Component {
         <main>
           <div className='plus-grid'>
             <div>
-              <div className='display-info' style={styleForGrid}>
+              <div style={styleForGrid}>
                 {stateNames}
               </div>
 
@@ -337,7 +353,7 @@ class Form extends React.Component {
             </div>
             <div className='plus' onClick={this.showAddState}>
               +
-              <div className='addState'>
+              <div className='add-state'>
                 <ul>
                   <label htmlFor="">Queensland</label>
                   <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
