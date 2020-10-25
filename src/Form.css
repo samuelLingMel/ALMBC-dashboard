@@ -9,7 +9,7 @@ main {
 
 .nav-main {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px 1fr 200px;
   grid-column-gap: 2px;
 }
 
@@ -19,45 +19,12 @@ aside h3, aside ul{
   padding: 0;
 }
 
-.plus {
-  font-size: 40px;
-  position: right;
-  background-color: blue;
-  color: white;
-  margin: 0;
-  height: 100%;
-}
-
-.plus-grid {
-  display: grid;
-  grid-template-columns: auto 22px;
-}
-
-.plus .add-state {
-  color: blue;
-}
-
-.add-state {
-  visibility: hidden;
-  background-color: white;
-  position: absolute;
-  margin: 10px;
-  width: 230px;
-  border: solid blue 1px;
-}
-
 .add-state label {
   font-size: 20px;
 }
 
 .add-state ul {
   margin: 0;
-}
-
-.plus .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 0.5s;
-  animation: fadeIn 0.5s;
 }
 
 .gray-bgc {
@@ -69,10 +36,6 @@ aside h3, aside ul{
   border: blue 1px solid;
   font-size: 20px;
 }
-
-/* .display-info, .state-title {
-  padding: 0 5px;
-} */
 
 .state-title {
   font-size: 22px;

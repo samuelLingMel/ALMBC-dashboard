@@ -267,11 +267,6 @@ class Form extends React.Component {
 
 //------------------------------------------------------------
 
-  showAddState = () => {
-    var addState= document.querySelector('.add-state');
-    addState.classList.toggle("show");
-  }
-
   toggleStates = (e) => {
     if ((this.state.states).includes(e.target.value)) {
     this.setState({
@@ -360,60 +355,63 @@ class Form extends React.Component {
     return(
       <div className="form nav-main">
         <aside className='nav-fields'>
-          <h3>State</h3>
-          <ul><input  value='rar' type="checkbox"  onClick={this.toggleFields} checked={checkField('rar')}/>Restrictions and Roadmaps</ul> 
-          <ul><input  value='csg' type="checkbox"  onClick={this.toggleFields} checked={checkField('csg')}/>COVID Safe Guidelines</ul>
-          <ul><input  value='csp' type="checkbox"  onClick={this.toggleFields} checked={checkField('csp')}/>COVID Safe plans</ul>
+          <h3>Fields</h3>
+          <ul>
+            <input  value='rar' type="checkbox"  onClick={this.toggleFields} checked={checkField('rar')}/>Restrictions and Roadmaps
+          </ul> 
+          <ul>
+            <input  value='csg' type="checkbox"  onClick={this.toggleFields} checked={checkField('csg')}/>COVID Safe Guidelines
+          </ul>
+          <ul>
+            <input  value='csp' type="checkbox"  onClick={this.toggleFields} checked={checkField('csp')}/>COVID Safe plans
+          </ul>
         </aside>
         <main>
-          <div className='plus-grid'>
-            <div className='content'>
-              <div className='state-names' style={styleForGrid}>
-                {stateNames}
-              </div>
+          <div className='content'>
+            <div className='state-names' style={styleForGrid}>
+              {stateNames}
+            </div>
 
-              {showFields}
-             
-            </div>
-            <div className='plus' onClick={this.showAddState}>
-              +
-              <div className='add-state'>
-                <ul>
-                  <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
-                  <label htmlFor="">Queensland</label>
-                </ul>
-                <ul>
-                  <input value='vic' type="checkbox"  onClick={this.toggleStates} checked={checkState('vic')}/>
-                  <label htmlFor="">Victoria</label>
-                </ul>
-                <ul>
-                  <input value='nsw' type="checkbox"  onClick={this.toggleStates} checked={checkState('nsw')}/>
-                  <label htmlFor="">New South Wales</label>
-                </ul>
-                <ul>
-                  <input value='nt' type="checkbox"  onClick={this.toggleStates} checked={checkState('nt')}/>
-                  <label htmlFor="">Northern Territory</label>
-                </ul>
-                <ul>
-                  <input value='sa' type="checkbox"  onClick={this.toggleStates} checked={checkState('sa')}/>
-                  <label htmlFor="">South Australia</label>
-                </ul>
-                <ul>
-                  <input value='act' type="checkbox"  onClick={this.toggleStates} checked={checkState('act')}/>
-                  <label htmlFor="">Australia Capitol Territory</label>
-                </ul>
-                <ul>
-                  <input value='tas' type="checkbox"  onClick={this.toggleStates} checked={checkState('tas')}/>
-                  <label htmlFor="">Tasmania</label>
-                </ul>
-                <ul>
-                  <input value='wa' type="checkbox"  onClick={this.toggleStates} checked={checkState('wa')}/>
-                  <label htmlFor="">Western Australia</label>
-                </ul>
-              </div>
-            </div>
+            {showFields}
+            
           </div>
+          
         </main>
+        <aside className='plus' onClick={this.showAddState}>
+          <h3>States</h3>
+          <ul>
+            <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
+            <label htmlFor="">Queensland</label>
+          </ul>
+          <ul>
+            <input value='vic' type="checkbox"  onClick={this.toggleStates} checked={checkState('vic')}/>
+            <label htmlFor="">Victoria</label>
+          </ul>
+          <ul>
+            <input value='nsw' type="checkbox"  onClick={this.toggleStates} checked={checkState('nsw')}/>
+            <label htmlFor="">New South Wales</label>
+          </ul>
+          <ul>
+            <input value='nt' type="checkbox"  onClick={this.toggleStates} checked={checkState('nt')}/>
+            <label htmlFor="">Northern Territory</label>
+          </ul>
+          <ul>
+            <input value='sa' type="checkbox"  onClick={this.toggleStates} checked={checkState('sa')}/>
+            <label htmlFor="">South Australia</label>
+          </ul>
+          <ul>
+            <input value='act' type="checkbox"  onClick={this.toggleStates} checked={checkState('act')}/>
+            <label htmlFor="">Australia Capitol Territory</label>
+          </ul>
+          <ul>
+            <input value='tas' type="checkbox"  onClick={this.toggleStates} checked={checkState('tas')}/>
+            <label htmlFor="">Tasmania</label>
+          </ul>
+          <ul>
+            <input value='wa' type="checkbox"  onClick={this.toggleStates} checked={checkState('wa')}/>
+            <label htmlFor="">Western Australia</label>
+          </ul>
+        </aside>
       </div>
     );
   };
