@@ -6,8 +6,13 @@ class Form extends React.Component {
     super(props)
     this.state = {
       states: ['nsw'],
-      fields: ['rar', 'csg', 'csp']
-    };
+      fields: ['rar', 'csg', 'csp'],
+      show: {
+        rar: 'open',
+        csg: 'open',
+        csp: 'open'
+      }
+    }; 
   };
 
 //------------------------------------------------------------
@@ -45,7 +50,6 @@ class Form extends React.Component {
   getInfo = (field, state) => {
     
     if (field === 'rar') {
-    // infoRestrictionsAndRoadmaps = (state) => {
       if (state === 'nsw') {
         return('Restrictions and Roadmaps NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'vic') {
@@ -65,8 +69,7 @@ class Form extends React.Component {
       }
     }
     
-    else if (field === 'csg') {
-    // infoCovidSafeGuidelines = (state) => {
+    else if (field === 'csg') { 
       if (state === 'nsw') {
         return('Covid Safe Guidelines NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'vic') {
@@ -87,7 +90,6 @@ class Form extends React.Component {
     }
 
     else if (field === 'csp') {
-    // infoCovidSafePlans = (state) => {
       if (state === 'nsw') {
         return('Covid Safe Plans NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
       } else if (state === 'vic') {
