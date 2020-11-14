@@ -53,3 +53,12 @@ aside h3, aside ul{
 .content {
   margin: 5px;
 }
+
+.arrows {
+  display: float;
+  float: right;
+}
+
+.arrows:hover {
+  cursor: pointer;
+}
