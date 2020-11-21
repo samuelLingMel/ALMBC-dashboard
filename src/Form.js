@@ -59,10 +59,18 @@ class Form extends React.Component {
   };
 
   componentDidUpdate(previousProps, previousState) {
-    // if the fields is the same as previous(hasn't changed or the states are the same as previous)
+    
     // not sure why this isn't working when more fields or states are added
+    // not working when adding to states because the previous state gets the added state as well
+    // if the fields are not the same or the states are not the same
+    console.log(previousState.fields !== this.state.fields)
+    console.log(previousState.fields)
+    console.log(this.state.fields)
+
+    // console.log(previousState.states !== this.state.states)
     // console.log(previousState.fields !== this.state.fields || previousState.states !== this.state.states)
-    if (previousState.fields != this.state.fields || previousState.states != this.state.states) {
+
+    if (previousState.fields !== this.state.fields || previousState.states !== this.state.states) {
       this.setState({loading: false});
       this.state.fields.forEach( fieldName => {
         const fetchInfo = async () => {
@@ -124,21 +132,17 @@ class Form extends React.Component {
     states: this.state.states.filter((value) => value !== (e.target.value))
       });
     } else {
-        var newStates = this.state.states
-        newStates.push(e.target.value)
-        this.setState({ states: newStates})
+        this.setState({ states: [...this.state.states, e.target.value]})
     }
   };
 
   toggleFields = (e) => {
     if ((this.state.fields).includes(e.target.value)) {
-    this.setState({
-    fields: this.state.fields.filter((value) => value !== (e.target.value))
+      this.setState({
+        fields: this.state.fields.filter((value) => value !== (e.target.value))
       });
     } else {
-        var newFields = this.state.fields
-        newFields.push(e.target.value)
-        this.setState({ fields: newFields})
+        this.setState({ fields: [...this.state.fields, e.target.value]})
     }
   };
 
