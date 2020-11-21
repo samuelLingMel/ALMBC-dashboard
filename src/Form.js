@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './Form.css'
 import dropDownArrow from './dropdownArrowState.png' 
 import upwardArrow from './dropdownSectionUpward.png' 
 import ReactHtmlParser from 'react-html-parser'; 
 
-const objFilter = (obj, predicate) => 
-  Object.keys(obj)
-    .filter( key => predicate(obj[key]) )
-    .reduce( (res, key) => (res[key] = obj[key], res), {} );
+const fieldsCategoryId = 47332
+const statesCategoryId = 6418
 
+// const objFilter = (obj, predicate) => 
+//   Object.keys(obj)
+//     .filter( key => predicate(obj[key]) )
+//     .reduce( (res, key) => (res[key] = obj[key], res), {} );
 
 class Form extends React.Component {
   constructor(props) {
@@ -18,86 +20,90 @@ class Form extends React.Component {
       fields: [],
       possibleStates: [],
       possibleFields: [],
-      show: { },
-      error: null,
-      isLoaded: false,
-      info: {}
-      
+      show: {},
+      info: {},
+      loading: {}
     }; 
   };
 
 //-----------------------------------------------------------
-componentDidMount() {
-  fetch("https://public-api.wordpress.com/rest/v1.1/sites/185189824/posts?filter[parent]=47332")
-    .then(res => res.json())
-    .then(
-      (result) => {
+  componentDidMount() {
+    // setting up possible states and fields in a scalable way
+    fetch("https://public-api.wordpress.com/rest/v1.1/sites/185189824/categories") 
+      .then(res => res.json())
+      .then(
+        (result) => {
+          
+          
+
+          var fieldsArray = result.categories.filter( category => category.parent === fieldsCategoryId)
+          fieldsArray.forEach( category => {
+            if (!this.state.possibleFields.includes(category.name)) {
+              this.setState( prevState => ({
+              possibleFields: [...prevState.possibleFields, category.name]
+              }))
+            }
+          })
+          var stateArray = result.categories.filter( state => state.parent === statesCategoryId)
+          stateArray.forEach( state => {
+            if (!this.state.possibleStates.includes(state.name)) {
+              this.setState( prevState => ({
+              possibleStates: [...prevState.possibleStates, state.name]
+              }))
+            }
+          })
+          
+        },
+
+      );
+  };
+
+  componentDidUpdate(previousProps, previousState) {
+    // if the fields is the same as previous(hasn't changed or the states are the same as previous)
+    // not sure why this isn't working when more fields or states are added
+    // console.log(previousState.fields !== this.state.fields || previousState.states !== this.state.states)
+    if (previousState.fields != this.state.fields || previousState.states != this.state.states) {
+      this.setState({loading: false});
+      this.state.fields.forEach( fieldName => {
+        const fetchInfo = async () => {
+          const response = await fetch(
+            `https://public-api.wordpress.com/rest/v1.1/sites/185189824/posts?category=${fieldName}`
+          );
+          const data = await response.json();
+
+          data.posts.forEach( (post) => {
+            // get state name of post and content/data for post
+            var stateName = (Object.keys(post.categories)).filter( category => (category != fieldName) && (category != 'Uncategorized'))[0]
+            
+
+
+            if (this.state.states.includes(stateName)) {
+              var postContent = post.content
+  
+              this.setState(prevState => ({
+                info: Object.assign(
+                  {},
+                  this.state.info,
+                  { ...prevState.info,
+                    [fieldName]: {
+                      ...prevState.info[fieldName],
+                      [stateName]: postContent
+                  }
+                  }),                    
+                loading: {
+                  ...prevState.loading,
+                  [fieldName + stateName]: true                  
+                }
+              }))
+
+            }
+
+          })
+        };
+
+        fetchInfo();
         
-
-        //parsing 
-        result.posts.forEach( (postJson,index) => {
-
-          // checks fields and will add this one if it isn't already there
-          var fieldCatObj = objFilter( postJson.terms.category, category => category.parent === 47332)
-
-          var fieldName = fieldCatObj[Object.keys(fieldCatObj)].name
-          if (!this.state.possibleFields.includes(fieldName)) {
-            this.setState( prevState => ({
-              possibleFields: [...prevState.possibleFields, fieldName]
-            }))
-          }
-          
-          var stateCatObj = objFilter( postJson.terms.category, category => category.parent === 6418)
-
-          var stateName = stateCatObj[Object.keys(stateCatObj)].name
-          if (!this.state.possibleStates.includes(stateName)) {
-            this.setState( prevState => ({
-              possibleStates: [...prevState.possibleStates, stateName]
-            }))
-          }
-
-          
-          // this.setState( prevState => ({
-          //   info: {...prevState.info, 
-          //     [stateName]: {
-          //       [fieldName]: postJson.content
-          //     }
-          //   }
-          // }));
-          
-          this.setState( prevState => ({
-            isLoaded: true
-          }));
-        })
-      },
-      
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-    );
-};
-
-
-  getStatesNames = (state) => {
-    if (state === 'nsw') {
-      return('New South Wales')
-    } else if (state === 'vic') {
-      return('Victoria')
-    } else if (state === 'qld') {
-      return('Queensland')
-    } else if (state === 'sa') {
-      return('South Australia')
-    } else if (state === 'nt') {
-      return('Northern Territory')
-    } else if (state === 'wa') {
-      return('Western Australia')
-    } else if (state === 'act') {
-      return('Australian Capitol Territory')
-    } else if (state === 'tas') {
-      return('Tasmania')
+      })
     }
   }
 
@@ -108,248 +114,6 @@ componentDidMount() {
 
   openField = () => {
 
-  }
-
-  getFieldNames = (fieldCode) => {
-    if (fieldCode === 'rar') {
-      return(<div className='field-title'>Restrictions and Roadmaps<img src={dropDownArrow} className = 'arrows' height='20px' onClick ={this.collapseField.bind(this, 'rar')} /></div>);
-    } else if (fieldCode === 'csg') {
-      return(<div className='field-title'>COVID Safe GuideLines<img src={upwardArrow} className = 'arrows' height='20px'/></div>);
-    } else if (fieldCode === 'csp') {
-      return(<div className='field-title'>COVID Safe Plans</div>);
-    }
-  }
-
-  getInfo = (field, state) => {
-    
-    if (field == 'Current Restrictions / Road to Recovery Stage / Step / Phase') {
-      if (state == 'New South Wales') {
-        const reactState = this.state;
-        const info = reactState.info
-        if (this.state.error) {
-          return <div>Error: {this.error.message}</div>;
-        } else if (reactState.isLoading) {
-          return <div>Loading...</div>;
-        } else {
-          return(
-          
-            <div>{ReactHtmlParser (info)} </div>
-
-          )
-        }
-      } else if (state === 'vic') {
-        return('Restrictions and Roadmaps VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'qld') {
-        return('Restrictions and Roadmaps QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'sa') {
-        return('Restrictions and Roadmaps SA Lorem ipsum')
-      } else if (state === 'nt') {
-        return('Restrictions and Roadmaps NT Lorem ipsum')
-      } else if (state === 'wa') {
-        return('Restrictions and Roadmaps WA Lorem ipsum')
-      } else if (state === 'act') {
-        return('Restrictions and Roadmaps ACT Lorem ipsum')
-      } else if (state === 'tas') {
-        return('Restrictions and Roadmaps TAS Lorem ipsum')
-      }
-    }
-    
-    else if (field === 'csg') { 
-      if (state === 'nsw') {
-        return('Covid Safe Guidelines NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'vic') {
-        return('Covid Safe Guidelines VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'qld') {
-        return('Covid Safe Guidelines QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'sa') {
-        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'nt') {
-        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'wa') {
-        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'act') {
-        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'tas') {
-        return(`Covid Safe Guidelines ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      }
-    }
-
-    else if (field === 'csp') {
-      if (state === 'nsw') {
-        return('Covid Safe Plans NSW Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'vic') {
-        return('Covid Safe Plans VIC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'qld') {
-        return('Covid Safe Plans QLD Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-      } else if (state === 'sa') {
-        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'nt') {
-        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'wa') {
-        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'act') {
-        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      } else if (state === 'tas') {
-        return(`Covid Safe Plans ${state} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`)
-      }
-    }
-    else if (field === 'adr') {
-    // infoAdditionalResources = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoLiveMusicRestrictions = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoSeatingRestrictions = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-    
-    // infoDanceRestrictions = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoAlcoholRestrictions = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoPhysicalDistancing = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoTravelPermits = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoMaximumNumberPatrons = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoContactRegisterRequirements = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoTicketing = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoTraining = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoBorderRestrictions = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-
-    // infoQuarantineRequirements = (state) => {
-    //   if (state === 'nsw') {
-    //   } else if (state === 'vic') {
-    //   } else if (state === 'qld') {
-    //   } else if (state === 'sa') {
-    //   } else if (state === 'nt') {
-    //   } else if (state === 'wa') {
-    //   } else if (state === 'act') {
-    //   } else if (state === 'tas') {
-    //   }
-    // }
-    }
   }
 
 //------------------------------------------------------------
@@ -381,10 +145,10 @@ componentDidMount() {
   render() {
 
     const styleForGrid = {
-        display: 'grid',
-        'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`,
-        'gridColumnGap': '5px'
-      }
+      display: 'grid',
+      'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`,
+      'gridColumnGap': '5px'
+    }
 
     const thisState = this.state
 
@@ -412,46 +176,65 @@ componentDidMount() {
       } else {
         stateNames.push(<div className='state-title gray-bgc'>{stateName}</div>)
       }
+      
+    })
+
+    let showFieldsContent = []
+    // loops through fields and gets the field name
+    
+    thisState.fields.forEach( fieldName => {
+      showFieldsContent.push(<div className='field-title'>{fieldName}</div>)
+        var infoDiv = []
+        //loop through states
+        thisState.states.forEach( (stateName, columnNumber) => {
+          if (thisState.loading[fieldName + stateName]) {
+            var content = thisState.info[fieldName][stateName]
+            
+          } else {
+            var content = ''
+          }
+          
+          if (columnNumber % 2 === 0) {
+            infoDiv.push(<div className='state-info'>{ReactHtmlParser(content)}</div>)
+          } else {
+            infoDiv.push(<div className='state-info gray-bgc'>{ReactHtmlParser(content)}</div>)
+          }
+        })
+        showFieldsContent.push(<div style={styleForGrid}>{infoDiv}</div>)
 
     })
-    
-    let showFields = []
-    
-    thisState.fields.forEach( (fieldCode) => {
-      const fieldName = this.getFieldNames(fieldCode)
-      let restrictionsAndRoadmaps = [];
+  
 
-      thisState.states.forEach(( stateCode, index) => {
-        if (index % 2 === 0) {
-          restrictionsAndRoadmaps.push(<div className='display-info'>{this.getInfo(fieldCode, stateCode)}</div>)
-        } else {
-          restrictionsAndRoadmaps.push(<div className='display-info gray-bgc'>{this.getInfo(fieldCode, stateCode)}</div>)
-        }
-      })
+      
+      
 
-      showFields.push(
-        <div className='field-card'>
-          {fieldName}
-        <div className='display-info' style={styleForGrid}>
-          {restrictionsAndRoadmaps}
-        </div>
-      </div>
-      )
-    })
+    var showStatesCheckBoxes = []
+    
+    thisState.possibleStates.forEach( name => { 
+      showStatesCheckBoxes.push(
+      <ul>
+        <input value={name} type="checkbox"  onClick={this.toggleStates} checked={checkState(name)}/>
+        <label htmlFor="">{name}</label>
+      </ul>)
+    })    
+
+    var showFieldsCheckBoxes = []
+    
+    thisState.possibleFields.forEach( name => { 
+      showFieldsCheckBoxes.push(
+      <ul>
+        <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
+        <label htmlFor="">{name}</label>
+      </ul>)
+    })    
+
+
 
     return(
       <div className="form nav-main">
         <aside className='nav-fields'>
           <h3>Fields</h3>
-          <ul>
-            <input  value='rar' type="checkbox"  onClick={this.toggleFields} checked={checkField('rar')}/>Restrictions and Roadmaps
-          </ul> 
-          <ul>
-            <input  value='csg' type="checkbox"  onClick={this.toggleFields} checked={checkField('csg')}/>COVID Safe Guidelines
-          </ul>
-          <ul>
-            <input  value='csp' type="checkbox"  onClick={this.toggleFields} checked={checkField('csp')}/>COVID Safe plans
-          </ul>
+          {showFieldsCheckBoxes}
         </aside>
         <main>
           <div className='content'>
@@ -459,45 +242,14 @@ componentDidMount() {
               {stateNames}
             </div>
 
-            {showFields}
-            
+              {showFieldsContent}
+
           </div>
           
         </main>
         <aside className='plus' onClick={this.showAddState}>
           <h3>States</h3>
-          <ul>
-            <input  value='qld' type="checkbox"  onClick={this.toggleStates} checked={checkState('qld')}/>
-            <label htmlFor="">Queensland</label>
-          </ul>
-          <ul>
-            <input value='vic' type="checkbox"  onClick={this.toggleStates} checked={checkState('vic')}/>
-            <label htmlFor="">Victoria</label>
-          </ul>
-          <ul>
-            <input value='nsw' type="checkbox"  onClick={this.toggleStates} checked={checkState('nsw')}/>
-            <label htmlFor="">New South Wales</label>
-          </ul>
-          <ul>
-            <input value='nt' type="checkbox"  onClick={this.toggleStates} checked={checkState('nt')}/>
-            <label htmlFor="">Northern Territory</label>
-          </ul>
-          <ul>
-            <input value='sa' type="checkbox"  onClick={this.toggleStates} checked={checkState('sa')}/>
-            <label htmlFor="">South Australia</label>
-          </ul>
-          <ul>
-            <input value='act' type="checkbox"  onClick={this.toggleStates} checked={checkState('act')}/>
-            <label htmlFor="">Australia Capitol Territory</label>
-          </ul>
-          <ul>
-            <input value='tas' type="checkbox"  onClick={this.toggleStates} checked={checkState('tas')}/>
-            <label htmlFor="">Tasmania</label>
-          </ul>
-          <ul>
-            <input value='wa' type="checkbox"  onClick={this.toggleStates} checked={checkState('wa')}/>
-            <label htmlFor="">Western Australia</label>
-          </ul>
+          {showStatesCheckBoxes}
         </aside>
       </div>
     );
