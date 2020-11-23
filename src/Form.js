@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './Form.css'
 import downArrow from './dropdownArrowState.png' 
 import upArrow from './dropdownSectionUpward.png' 
@@ -6,11 +6,6 @@ import ReactHtmlParser from 'react-html-parser';
 
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
-
-// const objFilter = (obj, predicate) => 
-//   Object.keys(obj)
-//     .filter( key => predicate(obj[key]) )
-//     .reduce( (res, key) => (res[key] = obj[key], res), {} );
 
 class Form extends React.Component {
   constructor(props) {
@@ -205,7 +200,7 @@ class Form extends React.Component {
         var handleClickShow = () => this.openField(fieldName)
       }
 
-      showFieldsContent.push(<div className='field-title'>{fieldName}<img value={fieldName} alt='' src={arrow} onClick={handleClickShow} /></div>)
+      showFieldsContent.push(<div className='field-title'>{fieldName}<img alt='' src={arrow} onClick={handleClickShow} /></div>)
         var infoDiv = []
         //loop through states
         thisState.states.forEach( (stateName, columnNumber) => {
@@ -213,7 +208,7 @@ class Form extends React.Component {
             var content = thisState.info[fieldName][stateName]
             
           } else {
-            var content = '\n'
+            var content = ' \n '
           }
           
           if (columnNumber % 2 === 0) {

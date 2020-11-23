@@ -1,5 +1,6 @@
 import React from 'react';
 import logoText from './ALMBCLogoName.png'
+import './Header.css'
 
 class Header extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Header extends React.Component {
   render() {
     return(
       <header>
-        <img src={logoText} alt=""/>
+        <img className='logo' src={logoText} alt=""/>
       </header>
     );
   };
