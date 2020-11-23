@@ -54,11 +54,13 @@ aside h3, aside ul{
   margin: 5px;
 }
 
-.arrows {
+.field-title img {
   display: float;
   float: right;
+  width: 20px;
+  height: 20px;
 }
 
-.arrows:hover {
+.field-title img:hover {
   cursor: pointer;
 }

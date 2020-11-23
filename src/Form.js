@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import './Form.css'
-import dropDownArrow from './dropdownArrowState.png' 
-import upwardArrow from './dropdownSectionUpward.png' 
+import downArrow from './dropdownArrowState.png' 
+import upArrow from './dropdownSectionUpward.png' 
 import ReactHtmlParser from 'react-html-parser'; 
 
 const fieldsCategoryId = 47332
@@ -20,9 +20,9 @@ class Form extends React.Component {
       fields: [],
       possibleStates: [],
       possibleFields: [],
-      show: {},
+      show: [],
       info: {},
-      loading: {}
+      loaded: {}
     }; 
   };
 
@@ -33,8 +33,6 @@ class Form extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          
-          
 
           var fieldsArray = result.categories.filter( category => category.parent === fieldsCategoryId)
           fieldsArray.forEach( category => {
@@ -62,16 +60,17 @@ class Form extends React.Component {
     
     // not sure why this isn't working when more fields or states are added
     // not working when adding to states because the previous state gets the added state as well
+    // this was because the way I was using setState was incorrect(use the spread method not defining it in another variable)
     // if the fields are not the same or the states are not the same
-    console.log(previousState.fields !== this.state.fields)
-    console.log(previousState.fields)
-    console.log(this.state.fields)
+    // console.log(previousState.fields !== this.state.fields)
+    // console.log(previousState.fields)
+    // console.log(this.state.fields)
 
     // console.log(previousState.states !== this.state.states)
     // console.log(previousState.fields !== this.state.fields || previousState.states !== this.state.states)
 
     if (previousState.fields !== this.state.fields || previousState.states !== this.state.states) {
-      this.setState({loading: false});
+      this.setState({loaded: false});
       this.state.fields.forEach( fieldName => {
         const fetchInfo = async () => {
           const response = await fetch(
@@ -81,7 +80,7 @@ class Form extends React.Component {
 
           data.posts.forEach( (post) => {
             // get state name of post and content/data for post
-            var stateName = (Object.keys(post.categories)).filter( category => (category != fieldName) && (category != 'Uncategorized'))[0]
+            var stateName = (Object.keys(post.categories)).filter( category => (category !== fieldName) && (category !== 'Uncategorized'))[0]
             
 
 
@@ -98,8 +97,8 @@ class Form extends React.Component {
                       [stateName]: postContent
                   }
                   }),                    
-                loading: {
-                  ...prevState.loading,
+                loaded: {
+                  ...prevState.loaded,
                   [fieldName + stateName]: true                  
                 }
               }))
@@ -115,34 +114,45 @@ class Form extends React.Component {
     }
   }
 
-  collapseField = (target, code) => {
-    this.state.show[`${code}`] = 'closed'
-    console.log(this.state.show[`${code}`])
+  collapseField = (fieldName) => {
+    this.setState({
+      show: this.state.show.filter((value) => value !== (fieldName))
+    }) 
   }
-
-  openField = () => {
-
+  
+  openField = (fieldName) => {
+    this.setState({
+      show: [...this.state.show, fieldName]
+    })
   }
 
 //------------------------------------------------------------
 
   toggleStates = (e) => {
     if ((this.state.states).includes(e.target.value)) {
-    this.setState({
-    states: this.state.states.filter((value) => value !== (e.target.value))
+      this.setState({
+        states: this.state.states.filter((value) => value !== (e.target.value)),
+        
       });
     } else {
-        this.setState({ states: [...this.state.states, e.target.value]})
+      this.setState({ 
+        states: [...this.state.states, e.target.value],
+        
+      })
     }
   };
 
   toggleFields = (e) => {
     if ((this.state.fields).includes(e.target.value)) {
       this.setState({
-        fields: this.state.fields.filter((value) => value !== (e.target.value))
+        fields: this.state.fields.filter((value) => value !== (e.target.value)),
+        show: this.state.show.filter((value) => value !== (e.target.value))
       });
     } else {
-        this.setState({ fields: [...this.state.fields, e.target.value]})
+        this.setState({ 
+          fields: [...this.state.fields, e.target.value],
+          show: [...this.state.show, e.target.value]
+        })
     }
   };
 
@@ -187,15 +197,23 @@ class Form extends React.Component {
     // loops through fields and gets the field name
     
     thisState.fields.forEach( fieldName => {
-      showFieldsContent.push(<div className='field-title'>{fieldName}</div>)
+      if (thisState.show.includes(fieldName)) {
+        var arrow = downArrow
+        var handleClickShow = () => this.collapseField(fieldName)
+      } else {
+        var arrow = upArrow
+        var handleClickShow = () => this.openField(fieldName)
+      }
+
+      showFieldsContent.push(<div className='field-title'>{fieldName}<img value={fieldName} alt='' src={arrow} onClick={handleClickShow} /></div>)
         var infoDiv = []
         //loop through states
         thisState.states.forEach( (stateName, columnNumber) => {
-          if (thisState.loading[fieldName + stateName]) {
+          if (thisState.loaded[fieldName + stateName] && thisState.show.includes(fieldName)) {
             var content = thisState.info[fieldName][stateName]
             
           } else {
-            var content = ''
+            var content = '\n'
           }
           
           if (columnNumber % 2 === 0) {
@@ -207,9 +225,6 @@ class Form extends React.Component {
         showFieldsContent.push(<div style={styleForGrid}>{infoDiv}</div>)
 
     })
-  
-
-      
       
 
     var showStatesCheckBoxes = []
