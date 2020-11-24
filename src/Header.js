@@ -12,6 +12,8 @@ class Header extends React.Component {
     return(
       <header className='sticky-header'>
         <img className='logo' src={logoText} alt=""/>
+        <a href='https://almbc.org.au/membership' className='join-button'>Join the ALMBC</a>
+        
       </header>
     );
   };
