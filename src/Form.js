@@ -15,7 +15,8 @@ class Form extends React.Component {
       fields: [],
       possibleStates: [],
       possibleFields: [],
-      show: [],
+      showFields: [],
+      showNav: [],
       info: {},
       loaded: {}
     }; 
@@ -29,7 +30,7 @@ class Form extends React.Component {
       .then(
         (result) => {
 
-          var fieldsArray = result.categories.filter( category => category.parent === fieldsCategoryId)
+          var fieldsArray = result.categories.filter( category => category.parent === fieldsCategoryId).sort((a, b) => (a.description > b.description) ? 1 : -1)
           fieldsArray.forEach( category => {
             if (!this.state.possibleFields.includes(category.name)) {
               this.setState( prevState => ({
@@ -111,14 +112,22 @@ class Form extends React.Component {
 
   collapseField = (fieldName) => {
     this.setState({
-      show: this.state.show.filter((value) => value !== (fieldName))
+      showFields: this.state.showFields.filter((value) => value !== (fieldName))
     }) 
   }
   
   openField = (fieldName) => {
     this.setState({
-      show: [...this.state.show, fieldName]
+      showFields: [...this.state.showFields, fieldName]
     })
+  }
+
+  unshowAllFields = () => {
+    this.setState({ showFields: []})
+  }
+
+  showAllFields = () => {
+    this.setState({ showFields: this.state.possibleFields})
   }
 
 //------------------------------------------------------------
@@ -141,12 +150,12 @@ class Form extends React.Component {
     if ((this.state.fields).includes(e.target.value)) {
       this.setState({
         fields: this.state.fields.filter((value) => value !== (e.target.value)),
-        show: this.state.show.filter((value) => value !== (e.target.value))
+        showFields: this.state.showFields.filter((value) => value !== (e.target.value))
       });
     } else {
         this.setState({ 
           fields: [...this.state.fields, e.target.value],
-          show: [...this.state.show, e.target.value]
+          showFields: [...this.state.showFields, e.target.value]
         })
     }
   };
@@ -192,7 +201,7 @@ class Form extends React.Component {
     // loops through fields and gets the field name
     
     thisState.fields.forEach( fieldName => {
-      if (thisState.show.includes(fieldName)) {
+      if (thisState.showFields.includes(fieldName)) {
         var arrow = downArrow
         var handleClickShow = () => this.collapseField(fieldName)
       } else {
@@ -200,11 +209,11 @@ class Form extends React.Component {
         var handleClickShow = () => this.openField(fieldName)
       }
 
-      showFieldsContent.push(<div className='field-title'>{fieldName}<img alt='' src={arrow} onClick={handleClickShow} /></div>)
+      showFieldsContent.push(<div className='field-title'>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
         var infoDiv = []
         //loop through states
         thisState.states.forEach( (stateName, columnNumber) => {
-          if (thisState.loaded[fieldName + stateName] && thisState.show.includes(fieldName)) {
+          if (thisState.loaded[fieldName + stateName] && thisState.showFields.includes(fieldName)) {
             var content = thisState.info[fieldName][stateName]
             
           } else {
@@ -245,26 +254,33 @@ class Form extends React.Component {
 
 
     return(
-      <div className="form nav-main">
-        <aside className='nav-fields'>
-          <h3>Fields</h3>
-          {showFieldsCheckBoxes}
-        </aside>
-        <main>
-          <div className='content'>
-            <div className='state-names' style={styleForGrid}>
-              {stateNames}
+      <div>
+        
+        <div className="form nav-main">
+
+          <aside className='nav'>
+            <aside className='nav-states'>
+              <h3>States</h3>
+              {showStatesCheckBoxes}
+            </aside>
+            <aside className='nav-fields'>
+              <h3>Topics</h3>
+              {showFieldsCheckBoxes}
+            </aside>
+          </aside>
+          <main>
+          <h2 className="big-title">National Gig-<span className='green-text'>Ready</span> Dashboard</h2>
+          <img className='arrows'alt='' src={upArrow} onClick={this.unshowAllFields} />
+          <img className='arrows'alt='' src={downArrow} onClick={this.showAllFields} />
+
+            <div className='content'>
+              <div className='state-names' style={styleForGrid}>
+                {stateNames}
+              </div>
+                {showFieldsContent}
             </div>
-
-              {showFieldsContent}
-
-          </div>
-          
-        </main>
-        <aside className='plus' onClick={this.showAddState}>
-          <h3>States</h3>
-          {showStatesCheckBoxes}
-        </aside>
+          </main>
+        </div>
       </div>
     );
   };

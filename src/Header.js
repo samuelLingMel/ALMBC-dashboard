@@ -10,7 +10,7 @@ class Header extends React.Component {
 
   render() {
     return(
-      <header>
+      <header className='sticky-header'>
         <img className='logo' src={logoText} alt=""/>
       </header>
     );

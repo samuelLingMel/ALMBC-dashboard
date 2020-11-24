@@ -11,7 +11,7 @@ main {
 
 .nav-main {
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: 200px 1fr;
   grid-column-gap: 2px;
   width: 90%;
   margin: 0 auto;
@@ -58,13 +58,18 @@ aside h3, aside ul{
   margin: 5px;
 }
 
-.field-title img {
+.arrows {
   display: float;
   float: right;
   width: 20px;
   height: 15px;
+  margin: 3px 3px;
 }
 
-.field-title img:hover {
+.arrows:hover {
   cursor: pointer;
+}
+
+.big-title {
+  display:inline-block;
 }
