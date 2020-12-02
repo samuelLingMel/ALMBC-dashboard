@@ -4,11 +4,24 @@ import downArrow from './dropdownArrowState.png'
 import upArrow from './dropdownSectionUpward.png' 
 import ReactHtmlParser from 'react-html-parser'; 
 
+
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
 
 class Form extends React.Component {
+
   constructor(props) {
+    let topicsProps
+    let locationsProps
+    let queryString
+    let re = new RegExp(/topics=(.{1,})&locations=(.{1,})/)
+    if (props.location.search) {
+      // console.log(re.exec(props.location.search))
+      [queryString, topicsProps, locationsProps] = re.exec(props.location.search)
+      topicsProps = topicsProps.split('-').map( stringNumber => Number(stringNumber))
+      locationsProps = locationsProps.split('-').map( stringNumber => Number(stringNumber))
+    }
+    
     super(props)
     this.state = {
       states: [],
@@ -18,8 +31,11 @@ class Form extends React.Component {
       showFields: [],
       showNav: [],
       info: {},
-      loaded: {}
+      loaded: {},
+      topicsPropsState: topicsProps,
+      locationsPropsState: locationsProps
     }; 
+ 
   };
 
 //-----------------------------------------------------------
@@ -29,43 +45,56 @@ class Form extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-
           var fieldsArray = result.categories.filter( category => category.parent === fieldsCategoryId).sort((a, b) => (a.description > b.description) ? 1 : -1)
-          fieldsArray.forEach( category => {
+          fieldsArray.forEach( (category, index) => {
             if (!this.state.possibleFields.includes(category.name)) {
               this.setState( prevState => ({
-              possibleFields: [...prevState.possibleFields, category.name]
+                possibleFields: [...prevState.possibleFields, category.name]
               }))
+            }
+            if (this.state.topicsPropsState) {
+              if (this.state.topicsPropsState.includes(index)) {
+                this.setState( prevState => ({
+                  fields: [...prevState.fields, category.name]
+                }))
+              }
             }
           })
           var stateArray = result.categories.filter( state => state.parent === statesCategoryId)
-          stateArray.forEach( state => {
+          stateArray.forEach( (state, index) => {
             if (!this.state.possibleStates.includes(state.name)) {
               this.setState( prevState => ({
               possibleStates: [...prevState.possibleStates, state.name]
               }))
             }
+            if (this.state.locationsPropsState) {
+              if (this.state.locationsPropsState.includes(index)) {
+                this.setState( prevState => ({
+                  states: [...prevState.states, state.name]
+                }))
+              }
+            }
           })
-          
         },
-
       );
   };
 
   componentDidUpdate(previousProps, previousState) {
+
+
     
-    // not sure why this isn't working when more fields or states are added
-    // not working when adding to states because the previous state gets the added state as well
-    // this was because the way I was using setState was incorrect(use the spread method not defining it in another variable)
-    // if the fields are not the same or the states are not the same
-    // console.log(previousState.fields !== this.state.fields)
-    // console.log(previousState.fields)
-    // console.log(this.state.fields)
-
-    // console.log(previousState.states !== this.state.states)
-    // console.log(previousState.fields !== this.state.fields || previousState.states !== this.state.states)
-
     if (previousState.fields !== this.state.fields || previousState.states !== this.state.states) {
+      let indexFields = []
+      this.state.fields.forEach( field => { indexFields.push(String(this.state.possibleFields.indexOf(field))) })
+      let indexStates = []
+      this.state.states.forEach( state => { indexStates.push(String(this.state.possibleStates.indexOf(state))) })
+
+      let currentUrlParams = new URLSearchParams(window.location.search);
+      currentUrlParams.set('topics', (indexFields.join('-')))
+      currentUrlParams.set('locations', (indexStates.join('-')))
+      this.props.history.push(window.location.pathname + "?" + currentUrlParams.toString());
+
+
       this.setState({loaded: false});
       this.state.fields.forEach( fieldName => {
         const fetchInfo = async () => {
@@ -77,8 +106,6 @@ class Form extends React.Component {
           data.posts.forEach( (post) => {
             // get state name of post and content/data for post
             var stateName = (Object.keys(post.categories)).filter( category => (category !== fieldName) && (category !== 'Uncategorized'))[0]
-            
-
 
             if (this.state.states.includes(stateName)) {
               var postContent = post.content
@@ -245,17 +272,16 @@ class Form extends React.Component {
     
     thisState.possibleFields.forEach( name => { 
       showFieldsCheckBoxes.push(
-      <ul>
-        <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
-        <label htmlFor="">{name}</label>
-      </ul>)
+        <ul>
+          <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
+          <label htmlFor="">{name}</label>
+        </ul>
+      )
     })    
-
 
 
     return(
       <div>
-        
         <div className="form nav-main">
 
           <aside className='nav'>
