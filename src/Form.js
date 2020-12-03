@@ -14,10 +14,11 @@ class Form extends React.Component {
     let topicsProps
     let locationsProps
     let queryString
-    let re = new RegExp(/topics=(.{1,})&locations=(.{1,})/)
+    let re = new RegExp(/topics=(.{0,})&locations=(.{0,})/)
     if (props.location.search) {
       // console.log(re.exec(props.location.search))
       [queryString, topicsProps, locationsProps] = re.exec(props.location.search)
+      
       topicsProps = topicsProps.split('-').map( stringNumber => Number(stringNumber))
       locationsProps = locationsProps.split('-').map( stringNumber => Number(stringNumber))
     }
@@ -106,9 +107,13 @@ class Form extends React.Component {
           data.posts.forEach( (post) => {
             // get state name of post and content/data for post
             var stateName = (Object.keys(post.categories)).filter( category => (category !== fieldName) && (category !== 'Uncategorized'))[0]
-
+            
             if (this.state.states.includes(stateName)) {
-              var postContent = post.content
+              let postContent = post.content
+              if (postContent.includes('Author:')) {
+                postContent = postContent.split('Author:')[0]
+              }
+
   
               this.setState(prevState => ({
                 info: Object.assign(
@@ -295,9 +300,12 @@ class Form extends React.Component {
             </aside>
           </aside>
           <main>
-          <h2 className="big-title">National Gig-<span className='green-text'>Ready</span> Dashboard</h2>
-          <img className='arrows'alt='' src={upArrow} onClick={this.unshowAllFields} />
-          <img className='arrows'alt='' src={downArrow} onClick={this.showAllFields} />
+          <div className='grid-for-title'>
+            <div className='title-float-right'>
+              <div className='label-arrows' onClick={this.showAllFields}><img className='arrows'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
+              <div className='label-arrows' onClick={this.unshowAllFields}><img className='arrows'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div>
+            </div>
+          </div>
 
             <div className='content'>
               <div className='state-names' style={styleForGrid}>

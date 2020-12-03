@@ -1,5 +1,5 @@
 .logo {
-  width: 14rem;
+  width: 250px;
 }
 
 /* .sticky-header {
@@ -11,16 +11,53 @@
   width: 0;
 } */
 
+.header-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 40px) 55px minmax(30px, 90px) minmax(30px, 165px) minmax(30px, 60px) minmax(30px, 115px) minmax(30px, 100px) minmax(30px, 65px) minmax(30px, 165px) ;
+  float: right;
+
+  padding-top: 10px;
+}
+header .links{
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 900;
+  text-shadow: 0.75px 0 #ffffff;
+  padding-top: 10px;
+}
+
+header a {
+  padding-top: 5px;
+}
+
+header .login {
+  color:#9dff88;
+  text-decoration: underline;
+}
+
+
+.banner {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
 .join-button {
-  background-color: lightgreen;
+  background-color: #9dff88;
   border: none;
-  color: blue;
-  padding: 15px 32px;
+  color: #1233ff;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: 20px;
+  font-size: 15px;
   margin: 4px 2px;
   cursor: pointer;
   float: right;
+  font-weight: 900;
+  text-shadow: 1px 0 #1233ff;
+  border-radius: 5px;
 }
