@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b59148acb59ca482be98dace4bfc1c07",
+    "revision": "c289259ba026ac500c8891ff0e3a7096",
     "url": "/ALMBC-dashboard/index.html"
   },
   {
-    "revision": "d451e793487ddcb0f90e",
-    "url": "/ALMBC-dashboard/static/css/main.58163285.chunk.css"
+    "revision": "632660275cfbb37680c1",
+    "url": "/ALMBC-dashboard/static/css/main.4f960a74.chunk.css"
   },
   {
-    "revision": "8fc42cdce2072d542b9f",
-    "url": "/ALMBC-dashboard/static/js/2.3fb96223.chunk.js"
+    "revision": "ec64965ce9754fbba64e",
+    "url": "/ALMBC-dashboard/static/js/2.a0ef611f.chunk.js"
   },
   {
     "revision": "643efbae9d6e0fbba269bfc7ee232ed1",
-    "url": "/ALMBC-dashboard/static/js/2.3fb96223.chunk.js.LICENSE.txt"
+    "url": "/ALMBC-dashboard/static/js/2.a0ef611f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d451e793487ddcb0f90e",
-    "url": "/ALMBC-dashboard/static/js/main.26b767ea.chunk.js"
+    "revision": "632660275cfbb37680c1",
+    "url": "/ALMBC-dashboard/static/js/main.cb9f3eb0.chunk.js"
   },
   {
     "revision": "c42aa95188a21993297e",
@@ -30,5 +30,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e032cc6348c14dc1424308d966b32dd7",
     "url": "/ALMBC-dashboard/static/media/heroBanner.e032cc63.svg"
+  },
+  {
+    "revision": "92d3210368dcd7e74343f0c161766153",
+    "url": "/ALMBC-dashboard/static/media/shareIcon.92d32103.svg"
   }
 ]);
