@@ -3,7 +3,8 @@ import './Form.css'
 import downArrow from './dropdownArrowState.png' 
 import upArrow from './dropdownSectionUpward.png' 
 import ReactHtmlParser from 'react-html-parser'; 
-
+import heroBanner from './heroBanner.svg'
+import shareIcon from './shareIcon.svg'
 
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
@@ -197,7 +198,6 @@ class Form extends React.Component {
     const styleForGrid = {
       display: 'grid',
       'gridTemplateColumns': `repeat(${this.state.states.length}, minmax(150px, 1fr)`,
-      'gridColumnGap': '5px'
     }
 
     const thisState = this.state
@@ -288,8 +288,27 @@ class Form extends React.Component {
     return(
       <div>
         <div className="form nav-main">
+          <div></div>
+          
+         
+          <main>
+            <img className='banner' src={heroBanner} alt=""/>
 
+            <div className='grid-for-buttons'>
+              
+            <button className='button-looks share-print-save'
+              onClick={() =>  navigator.clipboard.writeText(window.location.href)}
+            > <img className="share-icon" src={shareIcon} alt=""/>
+              <label className='share-label'>Share</label>
+            </button>
+            <div className='button-looks all' onClick={this.showAllFields}><img className='all-icon'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
+            <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div>
+            </div>
+          
+            
+          </main>
           <aside className='nav'>
+
             <aside className='nav-states'>
               <h3>States</h3>
               {showStatesCheckBoxes}
@@ -299,19 +318,14 @@ class Form extends React.Component {
               {showFieldsCheckBoxes}
             </aside>
           </aside>
-          <main>
-          <div className='grid-for-title'>
-            <div className='title-float-right'>
-              <div className='label-arrows' onClick={this.showAllFields}><img className='arrows'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
-              <div className='label-arrows' onClick={this.unshowAllFields}><img className='arrows'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div>
-            </div>
-          </div>
-
+          <main className='content-table'>
             <div className='content'>
               <div className='state-names' style={styleForGrid}>
                 {stateNames}
-              </div>
+              </div >
+              <div className='background-white'>
                 {showFieldsContent}
+              </div>
             </div>
           </main>
         </div>

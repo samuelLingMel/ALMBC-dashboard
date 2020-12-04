@@ -3,7 +3,7 @@ import logoText from './ALMBCLogoName.png'
 import twitter from './twitter.png'
 import facebook from './facebook.png'
 import instagram from './instagram.png'
-import heroBanner from './heroBanner.svg'
+
 import './Header.css'
 
 class Header extends React.Component {
@@ -15,7 +15,7 @@ class Header extends React.Component {
   render() {
     return(
       <header className='sticky-header'>
-        <a href='https://almbc.org.au/'><img className='logo' src={logoText} alt=""/></a>
+        {/* <a href='https://almbc.org.au/'><img className='logo' src={logoText} alt=""/></a> */}
         <div className='header-grid'>
           <a href='https://twitter.com/ALMBC__' target="_blank"><img className='social-media' src={twitter} alt=""/></a>
           <a href='https://www.facebook.com/AusLiveMusicBusinessCouncil/' target="_blank"><img className='social-media' src={facebook} alt=""/></a>
@@ -26,9 +26,8 @@ class Header extends React.Component {
           <a href='https://almbc.org.au/membership' className='links'>Membership</a>
           <a href='https://almbc.org.au/newsletter' className='links'>Newsletter</a>
           <a href='https://almbc.org.au/login' className='links login'>Log In</a>
-          <a href='https://almbc.org.au/register' className='join-button'>Join the ALMBC</a>
+          <a href='https://almbc.org.au/register' className='button-looks'>Join the ALMBC</a>
         </div>
-        <img className='banner' src={heroBanner} alt=""/>
       </header>
     );
   };

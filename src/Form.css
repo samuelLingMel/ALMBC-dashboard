@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
 
 ul { 
   padding-left: 10px;
 }
 
-main {
+.background-white {
   background-color: white;
   color: #1233ff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
 }
 
 .nav-main {
@@ -37,6 +39,16 @@ aside h3, aside ul{
   margin: 0;
 }
 
+.state-title {
+  font-size: 22px;
+  border-radius: 15px 15px 0 0;
+  padding: 3px 7px;
+  /* text-align: center; */
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  color: #1233ff;
+}
+
 .gray-bgc {
   background-color: lightgray;
   padding: 0 5px;
@@ -47,14 +59,10 @@ aside h3, aside ul{
   border-width: 2px 0;
   font-size: 20px;
   padding: 3px 7px;
+  
 }
 
-.state-title {
-  font-size: 22px;
-  border-radius: 15px 15px 0 0;
-  padding: 3px 7px;
-  /* text-align: center; */
-}
+
 
 .field-card {
   margin: 0;
@@ -67,6 +75,7 @@ aside h3, aside ul{
 
 .content {
   margin: 5px;
+  font-size: 18px;
 }
 
 .arrows {
@@ -77,7 +86,7 @@ aside h3, aside ul{
   margin: 3px 3px;
 }
 
-.arrows:hover, .label-arrows label:hover {
+.arrows:hover, .button-looks label:hover {
   cursor: pointer;
 }
 
@@ -101,3 +110,33 @@ aside h3, aside ul{
   margin: 4px;
 }
 
+.grid-for-buttons {
+  display: block;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+.share-print-save {
+  width: 90px;
+  height: 50px;
+  display: inline-block;
+}
+.all {
+  width: 125px;
+  height: 50px;
+  float: right;
+}
+
+.all-icon {
+  width: 18px;
+  height: 17px;
+  padding-top: 5px;
+}
+
+.share-icon .all-icon {
+  float: left;
+}
+
+.share-label {
+  margin-top: 5px;
+  float: right;
+}
