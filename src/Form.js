@@ -329,7 +329,7 @@ class Form extends React.Component {
         onChange={handleChange}
         
       >
-        <div className='nav-main'>
+
         <Sticky>
           <aside className='nav'>
 
@@ -353,7 +353,6 @@ class Form extends React.Component {
             {showFieldsContent}
           </div>
         </main>
-        </div>
       </StickyBoundary>
 
     return(

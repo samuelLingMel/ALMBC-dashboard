@@ -70,9 +70,19 @@ aside h3, aside ul{
   margin: 0;
 }
 
+.nav {
+  width: 200px;
+  display: inline;
+  float: left;
+}
+
 .content {
   margin: 5px;
   font-size: 18px;
+  width: 80%;
+  display: inline;
+  margin-left: 200px;
+  /* float: right; */
 }
 
 .arrows {
