@@ -291,26 +291,10 @@ class Form extends React.Component {
       }
     };
   
-    const stickySectionElements = function() {
-      return(
-      <StickyBoundary
-        // style={{ height: "55vh" }}
-        onStuck={handleStuck}
-        onUnstuck={handleUnstuck}
-        onChange={handleChange}
-      >
-        <Sticky as="h1">
-          <div className='state-names' style={styleForGrid}>
-            {stateNames}
-          </div >
-        </Sticky>
-        <div className='background-white'>
-          {showFieldsContent}
-        </div>
-      </StickyBoundary>
-    )
     
-  }
+    
+    
+  
 
   
 
@@ -337,6 +321,41 @@ class Form extends React.Component {
     })    
 
 
+    const stickySectionElements =
+      <StickyBoundary
+        // style={{ height: "55vh" }}
+        onStuck={handleStuck}
+        onUnstuck={handleUnstuck}
+        onChange={handleChange}
+        
+      >
+        <div className='nav-main'>
+        <Sticky>
+          <aside className='nav'>
+
+            <aside className='nav-states'>
+              <h3>States</h3>
+              {showStatesCheckBoxes}
+            </aside>
+            <aside className='nav-fields'>
+              <h3>Topics</h3>
+              {showFieldsCheckBoxes}
+            </aside>
+          </aside>
+        </Sticky>
+        <main className='content'>
+          <Sticky as="h1">
+            <div className='state-names' style={styleForGrid}>
+              {stateNames}
+            </div >
+          </Sticky>
+          <div className='background-white'>
+            {showFieldsContent}
+          </div>
+        </main>
+        </div>
+      </StickyBoundary>
+
     return(
       <div>
         <div className="form nav-main">
@@ -359,23 +378,13 @@ class Form extends React.Component {
           
             
           </main>
-          <aside className='nav'>
-
-            <aside className='nav-states'>
-              <h3>States</h3>
-              {showStatesCheckBoxes}
-            </aside>
-            <aside className='nav-fields'>
-              <h3>Topics</h3>
-              {showFieldsCheckBoxes}
-            </aside>
-          </aside>
-          <main className='content-table'>
-            <StickyViewport as="main" className="content">
-              {stickySectionElements()}
-            </StickyViewport>
-          </main>
+          
         </div>
+          
+            <StickyViewport as="main">
+              {stickySectionElements}
+            </StickyViewport>
+          
       </div>
     );
   };
