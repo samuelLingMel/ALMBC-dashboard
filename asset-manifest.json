@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ALMBC-dashboard/static/css/main.55c00ec4.chunk.css",
-    "main.js": "/ALMBC-dashboard/static/js/main.65fcae20.chunk.js",
-    "main.js.map": "/ALMBC-dashboard/static/js/main.65fcae20.chunk.js.map",
+    "main.js": "/ALMBC-dashboard/static/js/main.7c2d685d.chunk.js",
+    "main.js.map": "/ALMBC-dashboard/static/js/main.7c2d685d.chunk.js.map",
     "runtime-main.js": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js",
     "runtime-main.js.map": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js.map",
     "static/js/2.46395e6e.chunk.js": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js",
     "static/js/2.46395e6e.chunk.js.map": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js.map",
     "index.html": "/ALMBC-dashboard/index.html",
-    "precache-manifest.e890ab4517e86f786f988394ed53b52c.js": "/ALMBC-dashboard/precache-manifest.e890ab4517e86f786f988394ed53b52c.js",
+    "precache-manifest.9dedc8e59370b9ed996d49a91a2b1b9c.js": "/ALMBC-dashboard/precache-manifest.9dedc8e59370b9ed996d49a91a2b1b9c.js",
     "service-worker.js": "/ALMBC-dashboard/service-worker.js",
     "static/css/main.55c00ec4.chunk.css.map": "/ALMBC-dashboard/static/css/main.55c00ec4.chunk.css.map",
     "static/js/2.46395e6e.chunk.js.LICENSE.txt": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.110bf259.js",
     "static/js/2.46395e6e.chunk.js",
     "static/css/main.55c00ec4.chunk.css",
-    "static/js/main.65fcae20.chunk.js"
+    "static/js/main.7c2d685d.chunk.js"
   ]
 }
