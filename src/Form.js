@@ -283,17 +283,18 @@ class Form extends React.Component {
     const handleChange = ({ target, type }) => {
       if (type === "stuck") {
         // console.log(`Changed!!`, type, target);
-        // target.style.boxShadow =
-          // "0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4)";
+        target.style.boxShadow =
+          "0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4)";
       } else {
 
         target.style.boxShadow = "";
       }
     };
   
-    const stickySectionElements = 
+    const stickySectionElements = function() {
+      return(
       <StickyBoundary
-        style={{ height: "55vh" }}
+        // style={{ height: "55vh" }}
         onStuck={handleStuck}
         onUnstuck={handleUnstuck}
         onChange={handleChange}
@@ -307,6 +308,9 @@ class Form extends React.Component {
           {showFieldsContent}
         </div>
       </StickyBoundary>
+    )
+    
+  }
 
   
 
@@ -368,7 +372,7 @@ class Form extends React.Component {
           </aside>
           <main className='content-table'>
             <StickyViewport as="main" className="content">
-              {stickySectionElements}
+              {stickySectionElements()}
             </StickyViewport>
           </main>
         </div>
