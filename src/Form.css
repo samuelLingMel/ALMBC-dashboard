@@ -47,6 +47,8 @@ aside h3, aside ul{
   font-family: 'Poppins', sans-serif;
   background-color: white;
   color: #1233ff;
+  margin: 0;
+  padding-bottom: 0;
 }
 
 .gray-bgc {
@@ -66,11 +68,6 @@ aside h3, aside ul{
 
 .field-card {
   margin: 0;
-}
-
-.state-title {
-  margin: 0;
-  padding-bottom: 0;
 }
 
 .content {
@@ -130,6 +127,7 @@ aside h3, aside ul{
   width: 18px;
   height: 17px;
   padding-top: 5px;
+  margin-top: 2.5px;
 }
 
 .share-icon .all-icon {

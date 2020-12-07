@@ -16,7 +16,7 @@ footer a {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 650px;
+  grid-template-columns: minmax(200px, 1fr) minmax(650px, 1fr);
   font-size: 14px;
   column-gap: 20px;
 }

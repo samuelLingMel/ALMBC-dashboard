@@ -5,6 +5,10 @@ import upArrow from './dropdownSectionUpward.png'
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
 import shareIcon from './shareIcon.svg'
+import ReactDOM from "react-dom";
+
+import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
+
 
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
@@ -16,6 +20,7 @@ class Form extends React.Component {
     let locationsProps
     let queryString
     let re = new RegExp(/topics=(.{0,})&locations=(.{0,})/)
+    
     if (props.location.search) {
       // console.log(re.exec(props.location.search))
       [queryString, topicsProps, locationsProps] = re.exec(props.location.search)
@@ -57,10 +62,12 @@ class Form extends React.Component {
             if (this.state.topicsPropsState) {
               if (this.state.topicsPropsState.includes(index)) {
                 this.setState( prevState => ({
-                  fields: [...prevState.fields, category.name]
+                  fields: [...prevState.fields, category.name],
+                  showFields: [...this.state.showFields, category.name]
                 }))
               }
             }
+
           })
           var stateArray = result.categories.filter( state => state.parent === statesCategoryId)
           stateArray.forEach( (state, index) => {
@@ -262,6 +269,47 @@ class Form extends React.Component {
 
     })
       
+    const handleStuck = target => {
+      // console.log(`Stuck!`, target)
+      // target.style.backgroundColor = '#4caf50'
+      // target.style.boxShadow =
+      //   '0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4)'
+    };
+    const handleUnstuck = target => {
+      // console.log(`UNstuck!`, target)
+      // target.style.backgroundColor = 'rebeccapurple'
+      // target.style.boxShadow = ''
+    };
+    const handleChange = ({ target, type }) => {
+      if (type === "stuck") {
+        // console.log(`Changed!!`, type, target);
+        // target.style.boxShadow =
+          // "0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4)";
+      } else {
+
+        target.style.boxShadow = "";
+      }
+    };
+  
+    const stickySectionElements = 
+      <StickyBoundary
+        style={{ height: "55vh" }}
+        onStuck={handleStuck}
+        onUnstuck={handleUnstuck}
+        onChange={handleChange}
+      >
+        <Sticky as="h1">
+          <div className='state-names' style={styleForGrid}>
+            {stateNames}
+          </div >
+        </Sticky>
+        <div className='background-white'>
+          {showFieldsContent}
+        </div>
+      </StickyBoundary>
+
+  
+
 
     var showStatesCheckBoxes = []
     
@@ -319,14 +367,9 @@ class Form extends React.Component {
             </aside>
           </aside>
           <main className='content-table'>
-            <div className='content'>
-              <div className='state-names' style={styleForGrid}>
-                {stateNames}
-              </div >
-              <div className='background-white'>
-                {showFieldsContent}
-              </div>
-            </div>
+            <StickyViewport as="main" className="content">
+              {stickySectionElements}
+            </StickyViewport>
           </main>
         </div>
       </div>
