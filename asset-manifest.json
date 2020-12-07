@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ALMBC-dashboard/static/css/main.4f960a74.chunk.css",
-    "main.js": "/ALMBC-dashboard/static/js/main.cb9f3eb0.chunk.js",
-    "main.js.map": "/ALMBC-dashboard/static/js/main.cb9f3eb0.chunk.js.map",
+    "main.css": "/ALMBC-dashboard/static/css/main.55c00ec4.chunk.css",
+    "main.js": "/ALMBC-dashboard/static/js/main.65fcae20.chunk.js",
+    "main.js.map": "/ALMBC-dashboard/static/js/main.65fcae20.chunk.js.map",
     "runtime-main.js": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js",
     "runtime-main.js.map": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js.map",
-    "static/js/2.a0ef611f.chunk.js": "/ALMBC-dashboard/static/js/2.a0ef611f.chunk.js",
-    "static/js/2.a0ef611f.chunk.js.map": "/ALMBC-dashboard/static/js/2.a0ef611f.chunk.js.map",
+    "static/js/2.46395e6e.chunk.js": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js",
+    "static/js/2.46395e6e.chunk.js.map": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js.map",
     "index.html": "/ALMBC-dashboard/index.html",
-    "precache-manifest.61f3bea5b818dbcb3137b6c7571843d3.js": "/ALMBC-dashboard/precache-manifest.61f3bea5b818dbcb3137b6c7571843d3.js",
+    "precache-manifest.e890ab4517e86f786f988394ed53b52c.js": "/ALMBC-dashboard/precache-manifest.e890ab4517e86f786f988394ed53b52c.js",
     "service-worker.js": "/ALMBC-dashboard/service-worker.js",
-    "static/css/main.4f960a74.chunk.css.map": "/ALMBC-dashboard/static/css/main.4f960a74.chunk.css.map",
-    "static/js/2.a0ef611f.chunk.js.LICENSE.txt": "/ALMBC-dashboard/static/js/2.a0ef611f.chunk.js.LICENSE.txt",
+    "static/css/main.55c00ec4.chunk.css.map": "/ALMBC-dashboard/static/css/main.55c00ec4.chunk.css.map",
+    "static/js/2.46395e6e.chunk.js.LICENSE.txt": "/ALMBC-dashboard/static/js/2.46395e6e.chunk.js.LICENSE.txt",
     "static/media/ALMBCLogoName.png": "/ALMBC-dashboard/static/media/ALMBCLogoName.0eaae5f1.png",
     "static/media/heroBanner.svg": "/ALMBC-dashboard/static/media/heroBanner.e032cc63.svg",
     "static/media/shareIcon.svg": "/ALMBC-dashboard/static/media/shareIcon.92d32103.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.110bf259.js",
-    "static/js/2.a0ef611f.chunk.js",
-    "static/css/main.4f960a74.chunk.css",
-    "static/js/main.cb9f3eb0.chunk.js"
+    "static/js/2.46395e6e.chunk.js",
+    "static/css/main.55c00ec4.chunk.css",
+    "static/js/main.65fcae20.chunk.js"
   ]
 }
