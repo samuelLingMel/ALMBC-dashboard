@@ -305,6 +305,8 @@ class Form extends React.Component {
       showStatesCheckBoxes.push(
       <ul>
         <input value={name} type="checkbox"  onClick={this.toggleStates} checked={checkState(name)}/>
+        
+        <div className={`${name.replace(/\s/g,'')}Img`}></div>
         <label htmlFor="">{name}</label>
       </ul>)
     })    
@@ -315,6 +317,7 @@ class Form extends React.Component {
       showFieldsCheckBoxes.push(
         <ul>
           <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
+          <div className={`${name.replace(/\s/g,'')}Img`}></div>
           <label htmlFor="">{name}</label>
         </ul>
       )

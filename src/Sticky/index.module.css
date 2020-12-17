@@ -5,7 +5,9 @@
     /* background-color: rebeccapurple; */
     color: white;
     margin: 2px 0;
+    /* overflow-y: auto; */
   }
+  
   
   
   .sticky__section {

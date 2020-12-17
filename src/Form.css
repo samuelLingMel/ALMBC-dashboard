@@ -15,7 +15,7 @@ ul {
 
 .nav-main {
   display: grid;
-  grid-template-columns: 20px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-column-gap: 2px;
   width: 90%;
   margin: 0 auto;
@@ -75,6 +75,7 @@ aside h3, aside ul{
   width: 200px;
   display: inline;
   float: left;
+  /* overflow-y: scroll; */
 }
 
 .content {
@@ -148,4 +149,88 @@ aside h3, aside ul{
 .share-label {
   margin-top: 5px;
   float: right;
+}
+
+.nav aside ul div {
+  display: inline-block;
+}
+
+.AustralianCapitalTerritoryImg {
+  background-image: url(dashboard_icons/icons_white/mapAustralianCapitalTerritory.svg);
+  
+}
+
+.NewSouthWalesImg {
+  background-image: url(dashboard_icons/icons_white/mapNewSouthWales.svg);
+}
+
+.NorthernTerritoryImg {
+  background-image: url(dashboard_icons/icons_white/mapNorthernTerritory.svg);
+}
+
+.QueenslandImg {
+  background-image: url(dashboard_icons/icons_white/mapQueensland.svg);
+}
+
+.SouthAustraliaImg {
+  background-image: url(dashboard_icons/icons_white/mapSouthAustralia.svg);
+}
+
+.TasmaniaImg {
+  background-image: url(dashboard_icons/icons_white/mapTasmania.svg);
+}
+
+.VictoriaImg {
+  background-image: url(dashboard_icons/icons_white/mapVictoria.svg);
+}
+
+.WesternAustraliaImg {
+  background-image: url(dashboard_icons/icons_white/mapWesternAustralia.svg);
+}
+
+.CurrentRestrictionsandRoadmapsImg {
+  background-image:url(dashboard_icons/icons_white/CurrentRestrictionsandRoadmaps.svg)
+}
+
+.MaximumNo.ofpatronsImg {
+  background-image:url(dashboard_icons/icons_white/maximumNoPatrons.svg)
+}
+
+.PhysicaldistancingImg {
+  background-image:url(dashboard_icons/icons_white/physicalDistancing.svg)
+}
+
+.SeatingRestrictionsImg {
+  background-image:url(dashboard_icons/icons_white/seatingRequirements.svg)
+}
+.AlcoholRestrictionsImg {
+  background-image:url(dashboard_icons/icons_white/alcoholRestrictions.svg)
+}
+.DanceRestrictionsImg {
+  background-image:url(dashboard_icons/icons_white/danceRestrictions.svg)
+}
+.ContactRegisterRequirementImg {
+  background-image:url(dashboard_icons/icons_white/contactRegisters.svg)
+}
+.DanceRestrictionsImg {
+  background-image:url(dashboard_icons/icons_white/danceRestrictions.svg)
+}
+.COVIDSafeGuidelinesImg {
+  background-image:url(dashboard_icons/icons_white/COVIDSafeGuidelines.svg)
+}
+.COVIDSafePlansImg {
+  background-image:url(dashboard_icons/icons_white/COVIDSafePlans.svg)
+}
+.TicketingImg {
+  background-image:url(dashboard_icons/icons_white/ticketing.svg)
+}
+.TrainingImg {
+  background-image:url(dashboard_icons/icons_white/training.svg)
+}
+
+.BorderRestrictionsImg {
+  background-image:url(dashboard_icons/icons_white/borderRestrictions.svg)
+}
+.AdditionalResourcesImg {
+  background-image:url(dashboard_icons/icons_white/additionalResources.svg)
 }
