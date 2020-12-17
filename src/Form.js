@@ -362,8 +362,6 @@ class Form extends React.Component {
           
          
           <main>
-            <img className='banner' src={heroBanner} alt=""/>
-
             <div className='grid-for-buttons'>
               
             <button className='button-looks share-print-save'
@@ -371,8 +369,8 @@ class Form extends React.Component {
             > <img className="share-icon" src={shareIcon} alt=""/>
               <label className='share-label'>Share</label>
             </button>
-            <div className='button-looks all' onClick={this.showAllFields}><img className='all-icon'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
-            <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div>
+            {/* <div className='button-looks all' onClick={this.showAllFields}><img className='all-icon'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
+            <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div> */}
             </div>
           
             
@@ -381,6 +379,7 @@ class Form extends React.Component {
         </div>
           
             <StickyViewport as="main">
+            
               {stickySectionElements}
             </StickyViewport>
           
