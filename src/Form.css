@@ -153,6 +153,8 @@ aside h3, aside ul{
 
 .nav aside ul div {
   display: inline-block;
+  width: 25px;
+  height: 25px;
 }
 
 .AustralianCapitalTerritoryImg {
@@ -204,7 +206,7 @@ aside h3, aside ul{
   background-image:url(dashboard_icons/icons_white/seatingRequirements.svg)
 }
 .AlcoholRestrictionsImg {
-  background-image:url(dashboard_icons/icons_white/alcoholRestrictions.svg)
+  background-image:url(dashboard_icons/icons_white/AlcoholRestrictions.svg)
 }
 .DanceRestrictionsImg {
   background-image:url(dashboard_icons/icons_white/danceRestrictions.svg)
@@ -232,5 +234,5 @@ aside h3, aside ul{
   background-image:url(dashboard_icons/icons_white/borderRestrictions.svg)
 }
 .AdditionalResourcesImg {
-  background-image:url(dashboard_icons/icons_white/additionalResources.svg)
+  background-image:url(dashboard_icons/icons_white/AdditionalResources.svg)
 }
