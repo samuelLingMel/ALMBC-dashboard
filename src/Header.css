@@ -2,15 +2,9 @@
   width: 250px;
 }
 
-/* .sticky-header {
-  height: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  width: 0;
-} */
-
+header {
+  margin:0 24px 0 0 ;
+}
 .header-grid {
   display: grid;
   grid-template-columns: repeat(2, 40px) 55px minmax(30px, 90px) minmax(30px, 165px) minmax(30px, 60px) minmax(30px, 115px) minmax(30px, 100px) minmax(30px, 65px) minmax(30px, 165px) ;
