@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ALMBC-dashboard/precache-manifest.451ba58c74b19e4f496d69a8a3f4ee03.js"
+  "/ALMBC-dashboard/precache-manifest.96fd9cb9845dc8d3fdaf5d39fde71b05.js"
 );
 
 self.addEventListener('message', (event) => {
