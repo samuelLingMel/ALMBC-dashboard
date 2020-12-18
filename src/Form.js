@@ -1,7 +1,7 @@
 import React from 'react';
 import './Form.css'
-import downArrow from './dropdownArrowState.png' 
-import upArrow from './dropdownSectionUpward.png' 
+import downArrow from './collapseIcon.svg' 
+import upArrow from './expandIcon.svg' 
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
 import shareIcon from './shareIcon.svg'
@@ -248,7 +248,7 @@ class Form extends React.Component {
         var handleClickShow = () => this.openField(fieldName)
       }
 
-      showFieldsContent.push(<div className='field-title'>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
+      showFieldsContent.push(<div className={`field-title icon ${fieldName.replace(/\s|\./g,'')}`}>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
         var infoDiv = []
         //loop through states
         thisState.states.forEach( (stateName, columnNumber) => {
@@ -303,23 +303,21 @@ class Form extends React.Component {
     
     thisState.possibleStates.forEach( name => { 
       showStatesCheckBoxes.push(
-      <ul>
+      
+	  <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
         <input value={name} type="checkbox"  onClick={this.toggleStates} checked={checkState(name)}/>
-        
-        <div className={`${name.replace(/\s/g,'')}Img`}></div>
         <label htmlFor="">{name}</label>
-      </ul>)
+      </div>)
     })    
 
     var showFieldsCheckBoxes = []
     
     thisState.possibleFields.forEach( name => { 
       showFieldsCheckBoxes.push(
-        <ul>
-          <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
-          <div className={`${name.replace(/\s/g,'')}Img`}></div>
+        <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
+        	<input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
           <label htmlFor="">{name}</label>
-        </ul>
+        </div>
       )
     })    
 
@@ -334,59 +332,56 @@ class Form extends React.Component {
       >
 
         <Sticky>
-          <aside className='nav'>
-
-            <aside className='nav-states'>
-              <h3>States</h3>
-              {showStatesCheckBoxes}
-            </aside>
-            <aside className='nav-fields'>
-              <h3>Topics</h3>
-              {showFieldsCheckBoxes}
-            </aside>
-          </aside>
+			<div class="row">
+				<div class="col-sm-3">
+					<aside className='nav'>
+						<aside className='nav-states'>
+							<h3>States</h3>
+								{showStatesCheckBoxes}
+						</aside>
+						<aside className='nav-fields'>
+							<h3>Topics</h3>
+							{showFieldsCheckBoxes}
+						</aside>
+					</aside>
+				</div>
+				<div class="col-sm-9">
+				<main className='content'>
+					<Sticky as="h1">
+						<div className='state-names' style={styleForGrid}>
+						{stateNames}
+						</div >
+					</Sticky>
+					<div className='background-white'>
+						{showFieldsContent}
+					</div>
+				</main>
+				</div>
+			</div>
+          
         </Sticky>
-        <main className='content'>
-          <Sticky as="h1">
-            <div className='state-names' style={styleForGrid}>
-              {stateNames}
-            </div >
-          </Sticky>
-          <div className='background-white'>
-            {showFieldsContent}
-          </div>
-        </main>
+       
       </StickyBoundary>
 
     return(
-      <div>
-        <div className="form nav-main">
-          <div></div>
-          
-         
-          <main>
-            <img className='banner' src={heroBanner} alt=""/>
-
-            <div className='grid-for-buttons'>
-              
-            <button className='button-looks share-print-save'
-              onClick={() =>  navigator.clipboard.writeText(window.location.href)}
-            > <img className="share-icon" src={shareIcon} alt=""/>
-              <label className='share-label'>Share</label>
-            </button>
-            <div className='button-looks all' onClick={this.showAllFields}><img className='all-icon'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
-            <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div>
-            </div>
-          
-            
-          </main>
-          
+      <div class="container">
+        <div class="row">
+        	<div class="col-sm-9 col-sm-offset-3">
+            	<div className="form">
+            		<img className='banner' src={heroBanner} alt=""/>
+            		<div className='grid-for-buttons'>
+						<button className='button-actions button-download button-pad' >Download</button>
+						<button className='button-actions button-print button-pad'  >Print</button>
+              			<button className='button-actions button-share' onClick={() =>  navigator.clipboard.writeText(window.location.href)} >Share</button>
+              			<button className='button-actions all button-collapse ' onClick={this.unshowAllFields}>Collapse All</button>
+              			<button className='button-actions all button-expand button-pad' onClick={this.showAllFields}>Expand All</button>
+              		</div>
+				</div>
+        	</div>
         </div>
-          
             <StickyViewport as="main">
               {stickySectionElements}
             </StickyViewport>
-          
       </div>
     );
   };
