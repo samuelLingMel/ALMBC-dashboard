@@ -276,13 +276,8 @@ aside h3, aside ul{
 .iconnav.icon-SeatingRestrictions {
   background-image:url(dashboard_icons/icons_white/seatingRequirements.svg)
 }
-<<<<<<< HEAD
-.AlcoholRestrictionsImg {
-  background-image:url(dashboard_icons/icons_white/AlcoholRestrictions.svg)
-=======
 .iconnav.icon-AlcoholRestrictions {
   background-image:url(dashboard_icons/icons_white/alcoholRestrictions.svg)
->>>>>>> 23bcc1718f82976cf8c8fc9e4678bd416fa94360
 }
 .iconnav.icon-DanceRestrictions {
   background-image:url(dashboard_icons/icons_white/danceRestrictions.svg)
@@ -322,13 +317,8 @@ aside h3, aside ul{
 .iconnav.icon-BorderRestrictions {
   background-image:url(dashboard_icons/icons_white/borderRestrictions.svg)
 }
-<<<<<<< HEAD
-.AdditionalResourcesImg {
-  background-image:url(dashboard_icons/icons_white/AdditionalResources.svg)
-=======
 .iconnav.icon- AdditionalResources {
   background-image:url(dashboard_icons/icons_white/additionalResources.svg)
->>>>>>> 23bcc1718f82976cf8c8fc9e4678bd416fa94360
 }
 
 
