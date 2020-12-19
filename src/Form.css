@@ -105,6 +105,15 @@ aside h3, aside ul{
   cursor: pointer;
 }
 
+
+@media (max-width: 990px) {
+  .expandcollapse
+  {
+    margin-top:24px;
+  }
+}
+
+
 .button-actions {
   background-color: #9dff88;
   border: none;

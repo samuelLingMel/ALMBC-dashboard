@@ -31,7 +31,15 @@ class Footer extends React.Component {
   render() {
     var loading = () => {
       if (this.state.loaded) {
-        return(<div className="footer-grid"><div>{ReactHtmlParser(this.state.disclaimer)}</div> <div>{ReactHtmlParser(this.state.thankYou)}</div></div>)
+        return(
+        <div className="row">
+          <div className="col-md-9 col-md-offset-3">
+            <h2>Disclaimer</h2>
+            {ReactHtmlParser(this.state.disclaimer)}
+            <h2>Acknowlegement</h2>
+            {ReactHtmlParser(this.state.thankYou)}
+          </div>
+        </div>)
       } else {
         return(<div>is Loading.....</div>)
       }
