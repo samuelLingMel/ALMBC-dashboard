@@ -32,6 +32,8 @@ class Footer extends React.Component {
     var loading = () => {
       if (this.state.loaded) {
         return(
+          <div className="container">
+
         <div className="row">
           <div className="col-md-9 col-md-offset-3">
             <h2>Disclaimer</h2>
@@ -39,7 +41,10 @@ class Footer extends React.Component {
             <h2>Acknowlegement</h2>
             {ReactHtmlParser(this.state.thankYou)}
           </div>
-        </div>)
+        </div>
+        </div>
+)
+
       } else {
         return(<div>is Loading.....</div>)
       }

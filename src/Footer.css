@@ -9,6 +9,9 @@ footer * {
 footer {
   margin: 0 auto;
 }
+figure {
+  margin:0;
+}
 
 footer a {
     color: #9dff87;
