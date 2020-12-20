@@ -305,8 +305,8 @@ class Form extends React.Component {
       showStatesCheckBoxes.push(
       
 	  <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
-        <input value={name} type="checkbox"  onClick={this.toggleStates} checked={checkState(name)}/>
-        <label htmlFor="">{name}</label>
+        <input value={name} type="checkbox" id={`chk-${name.replace(/\s|\./g,'')}`}  onClick={this.toggleStates} checked={checkState(name)}/>
+        <label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
       </div>)
     })    
 
@@ -333,19 +333,8 @@ class Form extends React.Component {
 
         <Sticky>
 			<div class="row">
-				<div class="col-sm-3">
-					<aside className='nav'>
-						<aside className='nav-states'>
-							<h3>States</h3>
-								{showStatesCheckBoxes}
-						</aside>
-						<aside className='nav-fields'>
-							<h3>Topics</h3>
-							{showFieldsCheckBoxes}
-						</aside>
-					</aside>
-				</div>
-				<div class="col-sm-9">
+				
+				<div class="col-md-9 col-md-push-3">
 				<main className='content'>
 					<Sticky as="h1">
 						<div className='state-names' style={styleForGrid}>
@@ -357,6 +346,18 @@ class Form extends React.Component {
 					</div>
 				</main>
 				</div>
+        <div class="col-md-3 col-md-pull-9">
+					<aside className='nav'>
+						<aside className='nav-states'>
+							<h3>States</h3>
+								{showStatesCheckBoxes}
+						</aside>
+						<aside className='nav-fields'>
+							<h3>Topics</h3>
+							{showFieldsCheckBoxes}
+						</aside>
+					</aside>
+				</div>
 			</div>
           
         </Sticky>
@@ -366,15 +367,23 @@ class Form extends React.Component {
     return(
       <div class="container">
         <div class="row">
-        	<div class="col-sm-9 col-sm-offset-3">
+        	<div class="col-md-9 col-md-offset-3">
             	<div className="form">
             		<img className='banner' src={heroBanner} alt=""/>
-            		<div className='grid-for-buttons'>
-						<button className='button-actions button-download button-pad' >Download</button>
-						<button className='button-actions button-print button-pad'  >Print</button>
-              			<button className='button-actions button-share' onClick={() =>  navigator.clipboard.writeText(window.location.href)} >Share</button>
-              			<button className='button-actions all button-collapse ' onClick={this.unshowAllFields}>Collapse All</button>
-              			<button className='button-actions all button-expand button-pad' onClick={this.showAllFields}>Expand All</button>
+            		<div class="row">
+						<div class="col-md-7">
+							<button className='button-actions button-desktop button-download button-pad' >Download</button>
+							<button className='button-actions button-desktop button-print button-pad'  >Print</button>
+							<button className='button-actions button-desktop button-share' onClick={() =>  navigator.clipboard.writeText(window.location.href)} >Share</button>
+              			
+						</div>
+						<div class="col-md-5 text-right expandcollapse">
+							<button className='button-actions all button-collapse ' onClick={this.unshowAllFields}>Collapse All</button>
+							<button className='button-actions all button-expand button-pad' onClick={this.showAllFields}>Expand All</button>
+						</div>
+					</div>
+					<div className='grid-for-buttons'>
+						
               		</div>
 				</div>
         	</div>

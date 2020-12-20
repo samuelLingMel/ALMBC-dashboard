@@ -105,6 +105,15 @@ aside h3, aside ul{
   cursor: pointer;
 }
 
+
+@media (max-width: 990px) {
+  .expandcollapse
+  {
+    margin-top:24px;
+  }
+}
+
+
 .button-actions {
   background-color: #9dff88;
   border: none;
@@ -208,12 +217,12 @@ aside h3, aside ul{
   font-size:18px;
   font-weight:900;
   background-repeat: no-repeat;
-  background-position:32px 7px;
+  background-position:32px 14px;
 
 }
 
 .iconnav label {
-  padding-left:43px;
+  padding-left:0px;
   font-weight:300;
 }
 

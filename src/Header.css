@@ -5,12 +5,26 @@
 header {
   margin:0 24px 0 0 ;
 }
+
+@media (max-width: 990px) {
+  header {
+    text-align:center;
+  }
+}
+
 .header-grid {
   display: grid;
   grid-template-columns: repeat(2, 40px) 55px minmax(30px, 90px) minmax(30px, 165px) minmax(30px, 60px) minmax(30px, 115px) minmax(30px, 100px) minmax(30px, 65px) minmax(30px, 165px) ;
   float: right;
   padding-top: 30px;
+ 
 }
+@media (max-width: 990px) {
+  .header-grid {
+    display:none;
+  }
+}
+
 header .links{
   color: white;
   font-family: 'Poppins', sans-serif;
