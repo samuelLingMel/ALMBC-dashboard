@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ALMBC-dashboard/static/css/main.eb1e5336.chunk.css",
-    "main.js": "/ALMBC-dashboard/static/js/main.ec81e434.chunk.js",
-    "main.js.map": "/ALMBC-dashboard/static/js/main.ec81e434.chunk.js.map",
+    "main.css": "/ALMBC-dashboard/static/css/main.01bd4425.chunk.css",
+    "main.js": "/ALMBC-dashboard/static/js/main.3d8c034b.chunk.js",
+    "main.js.map": "/ALMBC-dashboard/static/js/main.3d8c034b.chunk.js.map",
     "runtime-main.js": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js",
     "runtime-main.js.map": "/ALMBC-dashboard/static/js/runtime-main.110bf259.js.map",
     "static/js/2.519c7259.chunk.js": "/ALMBC-dashboard/static/js/2.519c7259.chunk.js",
     "static/js/2.519c7259.chunk.js.map": "/ALMBC-dashboard/static/js/2.519c7259.chunk.js.map",
     "index.html": "/ALMBC-dashboard/index.html",
-    "precache-manifest.96fd9cb9845dc8d3fdaf5d39fde71b05.js": "/ALMBC-dashboard/precache-manifest.96fd9cb9845dc8d3fdaf5d39fde71b05.js",
+    "precache-manifest.98d6eac048b91f3fb8caa8313333516e.js": "/ALMBC-dashboard/precache-manifest.98d6eac048b91f3fb8caa8313333516e.js",
     "service-worker.js": "/ALMBC-dashboard/service-worker.js",
-    "static/css/main.eb1e5336.chunk.css.map": "/ALMBC-dashboard/static/css/main.eb1e5336.chunk.css.map",
+    "static/css/main.01bd4425.chunk.css.map": "/ALMBC-dashboard/static/css/main.01bd4425.chunk.css.map",
     "static/js/2.519c7259.chunk.js.LICENSE.txt": "/ALMBC-dashboard/static/js/2.519c7259.chunk.js.LICENSE.txt",
     "static/media/ALMBCLogoName.png": "/ALMBC-dashboard/static/media/ALMBCLogoName.0eaae5f1.png",
     "static/media/Form.css": "/ALMBC-dashboard/static/media/training.5ec0e0a3.svg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.110bf259.js",
     "static/js/2.519c7259.chunk.js",
-    "static/css/main.eb1e5336.chunk.css",
-    "static/js/main.ec81e434.chunk.js"
+    "static/css/main.01bd4425.chunk.css",
+    "static/js/main.3d8c034b.chunk.js"
   ]
 }
