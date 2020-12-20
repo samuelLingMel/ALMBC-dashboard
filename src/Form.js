@@ -348,6 +348,7 @@ class Form extends React.Component {
 					</div>
 				</main>
 				</div>
+        <Sticky>
         <div className="col-md-3 col-md-pull-9">
 					<aside className='nav'>
 						<aside className='nav-states'>
@@ -360,6 +361,7 @@ class Form extends React.Component {
 						</aside>
 					</aside>
 				</div>
+        </Sticky>
 			</div>
           
         </Sticky>
