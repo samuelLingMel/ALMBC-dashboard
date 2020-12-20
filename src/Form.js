@@ -317,8 +317,8 @@ class Form extends React.Component {
       showFieldsCheckBoxes.push(
 
         <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
-        	<input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
-          <label htmlFor="">{name}</label>
+        	<input value={name} type="checkbox" id={`chk-${name.replace(/\s|\./g,'')}`}   onClick={this.toggleFields} checked={checkField(name)}/>
+			<label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
         </div>
       )
     })    
