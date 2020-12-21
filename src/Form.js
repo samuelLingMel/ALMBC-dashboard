@@ -118,8 +118,9 @@ class Form extends React.Component {
             
             if (this.state.states.includes(stateName)) {
               let postContent = post.content
-              console.log(post.modified)
-              let timeStamp = `Last update: ${post.modified}`
+              let [wrongFormatDate, year, month, day] = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(post.modified)
+              console.log(wrongFormatDate, year + month + day)
+              let timeStamp = `Last updated on ${day}-${month}-${year}`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
               }
