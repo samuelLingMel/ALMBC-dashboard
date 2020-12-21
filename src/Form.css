@@ -160,6 +160,10 @@ aside h3, aside ul{
 .state-info {
   padding: 30px 24px;
 }
+.state-info:empty {
+  padding: 0;
+}
+
 
 .label-arrows {
   display: inline-block;
