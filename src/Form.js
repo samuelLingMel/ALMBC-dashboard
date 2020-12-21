@@ -118,11 +118,12 @@ class Form extends React.Component {
             
             if (this.state.states.includes(stateName)) {
               let postContent = post.content
+              console.log(post.modified)
+              let timeStamp = `Last update: ${post.modified}`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
               }
-
-  
+              postContent += timeStamp
               this.setState(prevState => ({
                 info: Object.assign(
                   {},
