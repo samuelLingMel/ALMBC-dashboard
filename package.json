@@ -21,6 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "proxy":"https://public-api.wordpress.com/rest/v1.1/sites/almbcdashboardcms.wordpress.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
