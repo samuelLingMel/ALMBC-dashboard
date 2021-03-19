@@ -30,7 +30,9 @@ header .links{
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
   font-size: 15px;
-  font-weight: 500;
+
+  font-weight: 00;
+
   text-shadow: 0.75px 0 #ffffff;
   padding-top: 10px;
 }
@@ -62,9 +64,11 @@ header .button-looks {
 }
 
 .button-looks {
-  background-color: #9dff88;
-  border: none;
-  color: #1233ff;
+  background: #6ae860;
+  color: #0d0dff;
+  font-weight:900;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 3px;
   padding: 10px;
   text-align: center;
   text-decoration: none;
@@ -73,7 +77,4 @@ header .button-looks {
   margin: 4px 2px;
   cursor: pointer;
   
-  font-weight: 400;
-  text-shadow: 1px 0 #1233ff;
-  border-radius: 5px;
 }
