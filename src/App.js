@@ -8,12 +8,6 @@ import { BrowserRouter as Router,
   Route
 } from 'react-router-dom'
 
-
-// function getParams() {
-//   let {locations, topics} = useParams()
-//   return([locations, topics])
-// }
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -22,11 +16,6 @@ class App extends React.Component {
     }; 
   };
 
-  // componentDidMount() {
-  //   let {locations, topics} = useParams()
-  //   this.setState = {state: [locations, topics]}
-  // }
-
   render() {
     return(
       <div className="App">
@@ -34,9 +23,7 @@ class App extends React.Component {
           <Router>
             <Switch>
               <Route path="/:queryString" component={Form}/>
-              {/* <Route path="/"
-                children={<Form />} /> */}
-              {/* </Route> */}
+              <Route path="/" component={Form}/>
             </Switch>
           </Router>
           <Footer />
