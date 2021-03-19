@@ -5,10 +5,9 @@ import Header from './Header.js'
 import Footer from './Footer.js'
 import { BrowserRouter as Router,
   Switch, 
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-import { useParams } from "react-router";
+
 
 // function getParams() {
 //   let {locations, topics} = useParams()
