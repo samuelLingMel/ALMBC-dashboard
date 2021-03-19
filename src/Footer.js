@@ -39,7 +39,7 @@ class Footer extends React.Component {
           <div className="col-md-9 col-md-offset-3">
             <h2>Disclaimer</h2>
             {ReactHtmlParser(this.state.disclaimer)}
-            <h2>Acknowlegement</h2>
+            <h2>Acknowledgement</h2>
             {ReactHtmlParser(this.state.thankYou)}
           </div>
         </div>
