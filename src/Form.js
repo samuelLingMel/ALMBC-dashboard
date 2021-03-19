@@ -2,8 +2,9 @@ import React from 'react';
 import './Form.css'
 import downArrow from './collapseIcon.svg' 
 import upArrow from './expandIcon.svg' 
+import shareIcon from './shareIcon.svg'
 import ReactHtmlParser from 'react-html-parser'; 
-import heroBanner from './heroBanner.svg'
+// import heroBanner from './heroBanner.svg'
 
 import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
 
@@ -117,6 +118,7 @@ class Form extends React.Component {
             if (this.state.states.includes(stateName)) {
               let postContent = post.content
               let [wrongFormatDate, year, month, day] = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(post.modified)
+              wrongFormatDate = wrongFormatDate // just getting rid of error message
               let timeStamp = `Last updated on ${day}-${month}-${year}`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
@@ -375,7 +377,7 @@ class Form extends React.Component {
             <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div> */}
 
             </div>
-          </div>
+          </main>
         </div>
             <StickyViewport as="main">
             

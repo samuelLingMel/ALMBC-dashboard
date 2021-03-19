@@ -1,10 +1,6 @@
 {
   "homepage": ".",
-<<<<<<< HEAD
   "name": "almbc-dashboard",
-=======
-  "name": "almbc",
->>>>>>> production
   "version": "0.1.0",
   "private": true,
   "dependencies": {
