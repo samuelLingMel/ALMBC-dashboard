@@ -4,10 +4,6 @@ import downArrow from './collapseIcon.svg'
 import upArrow from './expandIcon.svg' 
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
-<<<<<<< HEAD
-
-=======
->>>>>>> production
 
 import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
 
