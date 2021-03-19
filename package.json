@@ -1,6 +1,10 @@
 {
   "homepage": ".",
+<<<<<<< HEAD
   "name": "almbc-dashboard",
+=======
+  "name": "almbc",
+>>>>>>> production
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,6 +25,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "proxy":"https://public-api.wordpress.com/rest/v1.1/sites/almbcdashboardcms.wordpress.com/",
   "eslintConfig": {
     "extends": "react-app"
   },

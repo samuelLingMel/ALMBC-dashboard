@@ -18,7 +18,10 @@ class Footer extends React.Component {
     .then(res => res.json())
       .then(
         (result) => {
+<<<<<<< HEAD
           
+=======
+>>>>>>> production
           const [disclaimerText, acknowledgementText] = result.posts[0].content.split('Acknowledgement')
           this.setState({ disclaimer: (disclaimerText)})
           this.setState({ thankYou: (acknowledgementText)})

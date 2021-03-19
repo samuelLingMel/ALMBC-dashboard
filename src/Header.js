@@ -19,9 +19,9 @@ class Header extends React.Component {
       <header className='sticky-header'>
         { <a href='https://almbc.org.au/'><img className='logo' src={logoText} alt=""/></a> }
         <div className='header-grid'>
-          <a href='https://twitter.com/ALMBC__' target="_blank"><img className='social-media' src={twitter} alt=""/></a>
-          <a href='https://www.facebook.com/AusLiveMusicBusinessCouncil/' target="_blank"><img className='social-media' src={facebook} alt=""/></a>
-          <a href='https://www.instagram.com/accounts/login/?next=/almbc__/' target="_blank"><img className='social-media' src={instagram} alt=""/></a>
+          <a href='https://twitter.com/ALMBC__' target="_blank" rel="noopener noreferrer"><img className='social-media' src={twitter} alt=""/></a>
+          <a href='https://www.facebook.com/AusLiveMusicBusinessCouncil/' target="_blank" rel="noopener noreferrer"><img className='social-media' src={facebook} alt=""/></a>
+          <a href='https://www.instagram.com/accounts/login/?next=/almbc__/' target="_blank" rel="noopener noreferrer"><img className='social-media' src={instagram} alt=""/></a>
           <a href='https://almbc.org.au/about' className='links'>About Us</a>
           <a href='https://almbc.org.au/member-resources-(incl.-covid)' className='links'>Member Resources</a>
           <a href='https://almbc.org.au/news' className='links'>News</a>

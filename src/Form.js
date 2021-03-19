@@ -4,10 +4,12 @@ import downArrow from './collapseIcon.svg'
 import upArrow from './expandIcon.svg' 
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
+<<<<<<< HEAD
 
+=======
+>>>>>>> production
 
 import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
-
 
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
@@ -21,9 +23,9 @@ class Form extends React.Component {
     let re = new RegExp(/topics=(.{0,})&locations=(.{0,})/)
     
     if (props.location.search) {
-      // console.log(re.exec(props.location.search))
+
       [queryString, topicsProps, locationsProps] = re.exec(props.location.search)
-      
+
       topicsProps = topicsProps.split('-').map( stringNumber => Number(stringNumber))
       locationsProps = locationsProps.split('-').map( stringNumber => Number(stringNumber))
     }
@@ -39,7 +41,8 @@ class Form extends React.Component {
       info: {},
       loaded: {},
       topicsPropsState: topicsProps,
-      locationsPropsState: locationsProps
+      locationsPropsState: locationsProps,
+      queryStringState: queryString
     }; 
  
   };
@@ -318,34 +321,32 @@ class Form extends React.Component {
 
     const stickySectionElements =
       <StickyBoundary
-        // style={{ height: "55vh" }}
         onStuck={handleStuck}
         onUnstuck={handleUnstuck}
         onChange={handleChange}
-        
       >
 
         <Sticky>
-			<div className="row">
+			    <div className="row">
 				
-				<div className="col-md-9 col-md-push-3">
-				<main className='content'>
-					<Sticky as="h1">
-						<div className='state-names' style={styleForGrid}>
-						{stateNames}
-						</div >
-					</Sticky>
-					<div className='background-white'>
-						{showFieldsContent}
-					</div>
-				</main>
-				</div>
+				  <div className="col-md-9 col-md-push-3">
+				    <main className='content'>
+					  <Sticky as="h1">
+					  	<div className='state-names' style={styleForGrid}>
+						   {stateNames}
+					  	</div >
+					  </Sticky>
+					   <div className='background-white'>
+						    {showFieldsContent}
+					   </div>
+				    </main>
+				  </div>
         <Sticky>
         <div className="col-md-3 col-md-pull-9">
 					<aside className='nav'>
 						<aside className='nav-states'>
 							<h3>States</h3>
-								{showStatesCheckBoxes}
+							{showStatesCheckBoxes}
 						</aside>
 						<aside className='nav-fields'>
 							<h3>Topics</h3>
@@ -364,25 +365,23 @@ class Form extends React.Component {
       <div className="container">
         <div className="row">
         	<div className="col-md-9 col-md-offset-3">
-            	<div className="form">
-            		<img className='banner' src={heroBanner} alt=""/>
-            		<div className="row">
-						<div className="col-md-7">
-							<button className='button-actions button-desktop button-download button-pad' >Download</button>
-							<button className='button-actions button-desktop button-print button-pad'  >Print</button>
-							<button className='button-actions button-desktop button-share' onClick={() =>  navigator.clipboard.writeText(window.location.href)} >Share</button>
-              			
-						</div>
-						<div className="col-md-5 text-right expandcollapse">
-							<button className='button-actions all button-collapse ' onClick={this.unshowAllFields}>Collapse All</button>
-							<button className='button-actions all button-expand button-pad' onClick={this.showAllFields}>Expand All</button>
-						</div>
-					</div>
-					<div className='grid-for-buttons'>
-						
-              		</div>
-				</div>
-        	</div>
+            <div className="form">
+              <img className='banner' src={heroBanner} alt=""/>
+              <div className="row">
+                <div className="col-md-7">
+                  <button className='button-actions button-desktop button-download button-pad' >Download</button>
+                  <button className='button-actions button-desktop button-print button-pad'  >Print</button>
+                  <button className='button-actions button-desktop button-share' onClick={() =>  navigator.clipboard.writeText(window.location.href)} >Share</button>
+                        
+                </div>
+                <div className="col-md-5 text-right expandcollapse">
+                  <button className='button-actions all button-collapse ' onClick={this.unshowAllFields}>Collapse All</button>
+                  <button className='button-actions all button-expand button-pad' onClick={this.showAllFields}>Expand All</button>
+                </div>
+              </div>
+              <div className='grid-for-buttons'></div>
+            </div>
+          </div>
         </div>
             <StickyViewport as="main">
               {stickySectionElements}
