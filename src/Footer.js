@@ -19,8 +19,9 @@ class Footer extends React.Component {
       .then(
         (result) => {
 
-          this.setState({ disclaimer: (result.posts[0].content)})
-          this.setState({ thankYou: (result.posts[1].content)})
+          const [disclaimerText, acknowledgementText] = result.posts[0].content.split('Acknowledgement')
+          this.setState({ disclaimer: (disclaimerText)})
+          this.setState({ thankYou: (acknowledgementText)})
           this.setState({ loaded: true})
         }
       )
