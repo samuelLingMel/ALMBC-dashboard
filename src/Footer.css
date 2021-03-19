@@ -3,16 +3,29 @@
 footer * {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
+  margin-top:24px;
 }
 
 footer {
-  width: 80%;
   margin: 0 auto;
+}
+figure {
+  margin:0;
 }
 
 footer a {
     color: #9dff87;
 }
+
+
+@media (max-width:600px) {
+  footer table td:last-child
+  {
+    display:none;
+  }
+}
+
+
 
 .footer-grid {
   display: grid;

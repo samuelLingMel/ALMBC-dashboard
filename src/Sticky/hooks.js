@@ -16,13 +16,13 @@ function useSentinelOffsets(topSentinelRef) {
     const paddingtop = getProp("padding-top");
     const paddingBottom = getProp("padding-bottom");
     const height = getProp("height");
-    console.log(height)
     const marginTop = getProp("margin-top");
-
+    
     const bottomSentinelHeight = `calc(${marginTop} +
-        ${paddingtop} +
-        ${height} +
-        ${paddingBottom})`;
+      ${paddingtop} +
+      ${height} +
+      ${paddingBottom})`;
+      
 
     setBottomSentinelHeight(bottomSentinelHeight);
     setTopSentinelMarginTop(marginTop);

@@ -1,14 +1,11 @@
 import React from 'react';
 import './Form.css'
-import downArrow from './dropdownArrowState.png' 
-import upArrow from './dropdownSectionUpward.png' 
+import downArrow from './collapseIcon.svg' 
+import upArrow from './expandIcon.svg' 
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
-import shareIcon from './shareIcon.svg'
-import ReactDOM from "react-dom";
 
 import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
-
 
 const fieldsCategoryId = 47332
 const statesCategoryId = 6418
@@ -22,9 +19,9 @@ class Form extends React.Component {
     let re = new RegExp(/topics=(.{0,})&locations=(.{0,})/)
     
     if (props.location.search) {
-      // console.log(re.exec(props.location.search))
+
       [queryString, topicsProps, locationsProps] = re.exec(props.location.search)
-      
+
       topicsProps = topicsProps.split('-').map( stringNumber => Number(stringNumber))
       locationsProps = locationsProps.split('-').map( stringNumber => Number(stringNumber))
     }
@@ -40,7 +37,8 @@ class Form extends React.Component {
       info: {},
       loaded: {},
       topicsPropsState: topicsProps,
-      locationsPropsState: locationsProps
+      locationsPropsState: locationsProps,
+      queryStringState: queryString
     }; 
  
   };
@@ -118,11 +116,12 @@ class Form extends React.Component {
             
             if (this.state.states.includes(stateName)) {
               let postContent = post.content
+              let [wrongFormatDate, year, month, day] = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(post.modified)
+              let timeStamp = `Last updated on ${day}-${month}-${year}`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
               }
-
-  
+              postContent += timeStamp
               this.setState(prevState => ({
                 info: Object.assign(
                   {},
@@ -244,11 +243,11 @@ class Form extends React.Component {
         var arrow = downArrow
         var handleClickShow = () => this.collapseField(fieldName)
       } else {
-        var arrow = upArrow
-        var handleClickShow = () => this.openField(fieldName)
+        arrow = upArrow
+        handleClickShow = () => this.openField(fieldName)
       }
 
-      showFieldsContent.push(<div className='field-title'>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
+      showFieldsContent.push(<div className={`field-title icon ${fieldName.replace(/\s|\./g,'')}`}>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
         var infoDiv = []
         //loop through states
         thisState.states.forEach( (stateName, columnNumber) => {
@@ -256,7 +255,7 @@ class Form extends React.Component {
             var content = thisState.info[fieldName][stateName]
             
           } else {
-            var content = ' \n '
+            content = ' \n '
           }
           
           if (columnNumber % 2 === 0) {
@@ -290,69 +289,72 @@ class Form extends React.Component {
         target.style.boxShadow = "";
       }
     };
-  
-    
-    
-    
-  
-
-  
-
 
     var showStatesCheckBoxes = []
     
     thisState.possibleStates.forEach( name => { 
       showStatesCheckBoxes.push(
-      <ul>
-        <input value={name} type="checkbox"  onClick={this.toggleStates} checked={checkState(name)}/>
-        <label htmlFor="">{name}</label>
-      </ul>)
+      
+        <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
+          <input value={name} type="checkbox" id={`chk-${name.replace(/\s|\./g,'')}`}  onClick={this.toggleStates} checked={checkState(name)}/>
+          <label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
+        </div>
+      )
     })    
 
     var showFieldsCheckBoxes = []
     
     thisState.possibleFields.forEach( name => { 
       showFieldsCheckBoxes.push(
-        <ul>
-          <input value={name} type="checkbox"  onClick={this.toggleFields} checked={checkField(name)}/>
-          <label htmlFor="">{name}</label>
-        </ul>
+
+        <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
+        	<input value={name} type="checkbox" id={`chk-${name.replace(/\s|\./g,'')}`}   onClick={this.toggleFields} checked={checkField(name)}/>
+			    <label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
+        </div>
       )
     })    
 
 
     const stickySectionElements =
       <StickyBoundary
-        // style={{ height: "55vh" }}
         onStuck={handleStuck}
         onUnstuck={handleUnstuck}
         onChange={handleChange}
-        
       >
 
         <Sticky>
-          <aside className='nav'>
-
-            <aside className='nav-states'>
-              <h3>States</h3>
-              {showStatesCheckBoxes}
-            </aside>
-            <aside className='nav-fields'>
-              <h3>Topics</h3>
-              {showFieldsCheckBoxes}
-            </aside>
-          </aside>
+			    <div className="row">
+				
+				  <div className="col-md-9 col-md-push-3">
+				    <main className='content'>
+					  <Sticky as="h1">
+					  	<div className='state-names' style={styleForGrid}>
+						   {stateNames}
+					  	</div >
+					  </Sticky>
+					   <div className='background-white'>
+						    {showFieldsContent}
+					   </div>
+				    </main>
+				  </div>
+        <Sticky>
+        <div className="col-md-3 col-md-pull-9">
+					<aside className='nav'>
+						<aside className='nav-states'>
+							<h3>States</h3>
+							{showStatesCheckBoxes}
+						</aside>
+						<aside className='nav-fields'>
+							<h3>Topics</h3>
+							{showFieldsCheckBoxes}
+						</aside>
+					</aside>
+				</div>
         </Sticky>
-        <main className='content'>
-          <Sticky as="h1">
-            <div className='state-names' style={styleForGrid}>
-              {stateNames}
-            </div >
-          </Sticky>
-          <div className='background-white'>
-            {showFieldsContent}
-          </div>
-        </main>
+			</div>
+          
+        </Sticky>
+       
       </StickyBoundary>
 
     return(
@@ -371,18 +373,14 @@ class Form extends React.Component {
             </button>
             {/* <div className='button-looks all' onClick={this.showAllFields}><img className='all-icon'alt='' src={downArrow} onClick={this.showAllFields} /><label>Expand All</label></div>
             <div className='button-looks all' onClick={this.unshowAllFields}><img className='all-icon'alt='' src={upArrow} onClick={this.unshowAllFields} /><label>Collapse All</label></div> */}
+
             </div>
-          
-            
-          </main>
-          
+          </div>
         </div>
-          
             <StickyViewport as="main">
             
               {stickySectionElements}
             </StickyViewport>
-          
       </div>
     );
   };

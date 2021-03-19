@@ -1,13 +1,8 @@
 .sticky {
     position: sticky;
     top: 0;
-    /* padding: 1.5rem; */
-    /* background-color: rebeccapurple; */
     color: white;
-    margin: 2px 0;
   }
-  
-  
   .sticky__section {
     position: relative;
   }
