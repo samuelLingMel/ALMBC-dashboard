@@ -1,6 +1,6 @@
 {
-  "homepage": "http://samuelLingMel.github.io/ALMBC-dashboard",
-  "name": "almbc",
+  "homepage": ".",
+  "name": "almbc-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -18,9 +18,10 @@ class Footer extends React.Component {
     .then(res => res.json())
       .then(
         (result) => {
-
-          this.setState({ disclaimer: (result.posts[0].content)})
-          this.setState({ thankYou: (result.posts[1].content)})
+          
+          const [disclaimerText, acknowledgementText] = result.posts[0].content.split('Acknowledgement')
+          this.setState({ disclaimer: (disclaimerText)})
+          this.setState({ thankYou: (acknowledgementText)})
           this.setState({ loaded: true})
         }
       )
@@ -38,7 +39,7 @@ class Footer extends React.Component {
           <div className="col-md-9 col-md-offset-3">
             <h2>Disclaimer</h2>
             {ReactHtmlParser(this.state.disclaimer)}
-            <h2>Acknowlegement</h2>
+            <h2>Acknowledgement</h2>
             {ReactHtmlParser(this.state.thankYou)}
           </div>
         </div>

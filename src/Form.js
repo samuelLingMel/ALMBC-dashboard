@@ -4,8 +4,7 @@ import downArrow from './collapseIcon.svg'
 import upArrow from './expandIcon.svg' 
 import ReactHtmlParser from 'react-html-parser'; 
 import heroBanner from './heroBanner.svg'
-import shareIcon from './shareIcon.svg'
-import ReactDOM from "react-dom";
+
 
 import { StickyViewport, StickyBoundary, Sticky } from "./Sticky";
 
@@ -119,7 +118,6 @@ class Form extends React.Component {
             if (this.state.states.includes(stateName)) {
               let postContent = post.content
               let [wrongFormatDate, year, month, day] = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(post.modified)
-              console.log(wrongFormatDate, year + month + day)
               let timeStamp = `Last updated on ${day}-${month}-${year}`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
@@ -246,8 +244,8 @@ class Form extends React.Component {
         var arrow = downArrow
         var handleClickShow = () => this.collapseField(fieldName)
       } else {
-        var arrow = upArrow
-        var handleClickShow = () => this.openField(fieldName)
+        arrow = upArrow
+        handleClickShow = () => this.openField(fieldName)
       }
 
       showFieldsContent.push(<div className={`field-title icon ${fieldName.replace(/\s|\./g,'')}`}>{fieldName}<img className='arrows' alt='' src={arrow} onClick={handleClickShow} /></div>)
@@ -258,7 +256,7 @@ class Form extends React.Component {
             var content = thisState.info[fieldName][stateName]
             
           } else {
-            var content = ' \n '
+            content = ' \n '
           }
           
           if (columnNumber % 2 === 0) {
@@ -292,14 +290,6 @@ class Form extends React.Component {
         target.style.boxShadow = "";
       }
     };
-  
-    
-    
-    
-  
-
-  
-
 
     var showStatesCheckBoxes = []
     
@@ -320,7 +310,7 @@ class Form extends React.Component {
 
         <div className={`iconnav checkbox icon-${name.replace(/\s|\./g,'')}`}>
         	<input value={name} type="checkbox" id={`chk-${name.replace(/\s|\./g,'')}`}   onClick={this.toggleFields} checked={checkField(name)}/>
-			<label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
+			    <label htmlFor={`chk-${name.replace(/\s|\./g,'')}`}>{name}</label>
         </div>
       )
     })    
