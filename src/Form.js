@@ -119,7 +119,7 @@ class Form extends React.Component {
               let postContent = post.content
               let [wrongFormatDate, year, month, day] = /(\d\d\d\d)-(\d\d)-(\d\d)/g.exec(post.modified)
               wrongFormatDate = wrongFormatDate // just getting rid of error message
-              let timeStamp = `Last updated on ${day}-${month}-${year}`
+              let timeStamp = `<p class="lastupdated">Last updated on ${day}-${month}-${year}</p>`
               if (postContent.includes('Author:')) {
                 postContent = postContent.split('Author:')[0]
               }

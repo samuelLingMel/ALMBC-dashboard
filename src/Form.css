@@ -7,9 +7,14 @@ ul {
 
 .background-white {
   background-color: white;
-  color: #1233ff;
+  color: #333333;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 500;
+}
+
+.field-title {
+  color: #1233ff;
+  
 }
 
 .nav-main {
@@ -37,6 +42,11 @@ aside h3, aside label{
 
 .add-state ul {
   margin: 0;
+}
+
+.lastupdated {
+  font-size:14px;
+  font-style:italic;
 }
 
 .state-title {
@@ -82,14 +92,12 @@ aside h3, aside label{
   line-height: 24px;;  
 }
 
-.content a {
-  font-weight:700;
-}
-.content a:hover {
+.content a, .content a:visited {
   color: #1233ff;
-  font-weight:900;
 }
-
+.content ul li {
+  line-height:1.2em;
+}
 .arrows {
   display: float;
   float: right;
