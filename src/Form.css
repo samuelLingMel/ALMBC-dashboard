@@ -20,7 +20,7 @@ ul {
   margin: 0 auto;
 }
 
-aside h3, aside ul{
+aside h3, aside label{
   font-family: 'Poppins', sans-serif;
   color: white;
   padding: 0;

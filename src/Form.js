@@ -316,7 +316,7 @@ class Form extends React.Component {
       )
     })    
 
-
+    // sticky nav and headings
     const stickySectionElements =
       <StickyBoundary
         onStuck={handleStuck}
@@ -324,39 +324,33 @@ class Form extends React.Component {
         onChange={handleChange}
       >
 
-        <Sticky>
 			    <div className="row">
 				
-				  <div className="col-md-9 col-md-push-3">
-				    <main className='content'>
-					  <Sticky as="h1">
-					  	<div className='state-names' style={styleForGrid}>
-						   {stateNames}
-					  	</div >
-					  </Sticky>
-					   <div className='background-white'>
-						    {showFieldsContent}
-					   </div>
-				    </main>
-				  </div>
-        <Sticky>
-        <div className="col-md-3 col-md-pull-9">
-					<aside className='nav'>
-						<aside className='nav-states'>
-							<h3>States</h3>
-							{showStatesCheckBoxes}
-						</aside>
-						<aside className='nav-fields'>
-							<h3>Topics</h3>
-							{showFieldsCheckBoxes}
-						</aside>
-					</aside>
-				</div>
-        </Sticky>
-			</div>
-          
-        </Sticky>
-       
+      		  <div className="col-md-9 col-md-push-3">
+      		    <main className='content'>
+        			  <Sticky as="h1">
+        			  	<div className='state-names' style={styleForGrid}>
+        				   {stateNames}
+        			  	</div >
+        			  </Sticky>
+      			   <div className='background-white'>
+      				    {showFieldsContent}
+      			   </div>
+      		    </main>
+      		  </div>
+              <div className="col-md-3 col-md-pull-9">
+                <aside className='nav'>
+                  <aside className='nav-states'>
+                    <h3>States</h3>
+                    {showStatesCheckBoxes}
+                  </aside>
+                  <aside className='nav-fields'>
+                    <h3>Topics</h3>
+                    {showFieldsCheckBoxes}
+                  </aside>
+                </aside>
+              </div>
+			      </div>
       </StickyBoundary>
 
     return(
@@ -381,9 +375,9 @@ class Form extends React.Component {
             </div>
           </div>
         </div>
-            <StickyViewport as="main">
-              {stickySectionElements}
-            </StickyViewport>
+        <StickyViewport as="main">
+          {stickySectionElements}
+        </StickyViewport>
       </div>
     );
   };
